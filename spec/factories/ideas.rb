@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :idea do
-    title { "MyString" }
+    title { 'MyString' }
     description { "MyString" }
     estimated_project_time { 1 }
     initial_investment_value { "9.99" }
