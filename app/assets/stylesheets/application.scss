@@ -1,3 +1,28 @@
  //= require_tree .
  
- @import "bootstrap"
+ .radio-buttons {
+    margin: .5em 0;
+    span input {
+      float: left;
+      margin-right: 0.4em;
+      margin-top: 0.4em;
+    }
+
+    label.string { 
+      margin-bottom: .5em !important;
+    }
+  
+    clear: both;
+  }
+  
+  .form-block {
+    clear: both;
+    margin-top: .5em;
+  }
+  
+   .radio-buttons span {
+    clear: both;
+    display:block;
+   }
+
+   @import "bootstrap"
