@@ -9,6 +9,11 @@ pt-BR:
     attributes:
       user:
         password: Senha
+        password_confirmation: Confirme sua senha
+        document: Documento
+        birth_day: Data de Nascimento
+        name: Nome
+        amount_available_to_invest: Valor disponível para investir
   date:
     abbr_day_names:
     - Dom
