@@ -7,7 +7,7 @@
       </li>
       <li class="nav-item">
         <% unless user_signed_in? %>
-          <a class="nav-link <%= 'active' if(params[:controller] == 'devise/registrations' && params[:action] == 'new') %>" href="<%= new_user_registration_path %>">Cadastrar como investidor</a>
+          <a class="nav-link <%= 'active' if(params[:controller] == 'devise/registrations' && params[:action] == 'new') %>" href="<%= new_user_registration_path %>">Cadastre-se</a>
         <% end %>
       </li>
       <li class="nav-item">

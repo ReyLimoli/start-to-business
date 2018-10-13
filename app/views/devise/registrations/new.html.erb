@@ -1,11 +1,14 @@
+
+  <div class="container col-sm-8 mt-4 mb-4">
+    <h2>Cadastrar Investidor</h2>
+  </div>
+
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-<div class="container col-sm-8 mt-4 mb-4">
-  <h2>Cadastrar Investidor</h2>
-</div>
+  <%= f.collection_radio_buttons :user_type, [['idealizer', 'Idealizador'] ,['investor', 'Investidor']], :first, :last %>
 
-  <div class="form-inputs form-group container col-sm-8 mt-4 mb-4">
+  <div class="form-inputs form-group container col-sm-8 mt-4 mb-4 hide">
     <%= f.input :name,
                 label: 'Nome',
                 required: true,
