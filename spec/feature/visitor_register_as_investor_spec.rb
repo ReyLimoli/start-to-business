@@ -15,6 +15,6 @@ feature 'visitor register as an investor' do
     fill_in 'Confirme sua senha', with: 'teste123**'
     click_on 'Cadastrar'
   
-    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page).to have_content('Cadastro efetuado com sucesso.')
     end
 end
