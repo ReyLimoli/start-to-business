@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_13_162028) do
+ActiveRecord::Schema.define(version: 2018_10_14_001747) do
 
   create_table "ideas", force: :cascade do |t|
     t.string "title"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2018_10_13_162028) do
     t.integer "estimated_time_to_profit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
