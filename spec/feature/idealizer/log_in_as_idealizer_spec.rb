@@ -17,7 +17,7 @@ feature 'idealizer login' do
         expect(page).to have_content('Logout')
     end
 
-    scenario 'see link to my ideias' do
+    scenario 'login and see link to my ideias' do
         user = User.create!(name: 'Aparecida', email: 'user@user.com', 
             password:'123456', document: 123456, 
             linkedin: 'linkedin', birth_day: 10/05/2016)
