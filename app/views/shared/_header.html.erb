@@ -17,7 +17,7 @@
       </li>
       <li class="nav-item">
         <% if user_signed_in? %>
-          <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'index') %>" href="<%= ideas_path %>">Minhas ideias</a>
+          <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'index') %>" href="<%= ideas_path %>">Minhas ideias</a>
         <% end %>
       </li>
       <li class="nav-item">

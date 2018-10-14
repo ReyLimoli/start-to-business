@@ -1,56 +1,58 @@
 
-  <div class="container col-sm-8 mt-4 mb-4">
-    <h2>Cadastro</h2>
-  </div>
+<div class="container col-sm-8 mt-4 mb-4">
+  <h2>Cadastro</h2>
+</div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="container col-sm-8 mt-4 mb-4">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+    
+    <div class="form-group col-sm-8 mt-4 mb-4 radio-buttons">
+      <%= f.collection_radio_buttons :user_type, [['idealizer', 'Idealizador'], ['investor', 'Investidor']], :first, :last%>
+    </div>
 
-  <div class="form-group container col-sm-8 mt-4 mb-4 radio-buttons">
-    <%= f.collection_radio_buttons :user_type, [['idealizer', 'Idealizador'], ['investor', 'Investidor']], :first, :last%>
-  </div>
+    <div class="form-inputs form-group col-sm-12 mt-4 mb-4 hide">
+      <%= f.input :name,
+                  label: 'Nome',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "name" }%>    
+      <%= f.input :document,
+                  label: 'Documento',
+                  required: true,
+                  input_html: { autocomplete: "document" }%>  
+      <%= f.input :linkedin,
+                  label: 'Linkedin',
+                  required: true,
+                  input_html: { autocomplete: "linkedin" }%>  
+      <%= f.input :birth_day,
+                  label: 'Data de Nascimento',
+                  as: :date, html5: true,
+                  required: true,
+                  input_html: { autocomplete: "birth_day" }%> 
+      <%= f.input :amount_available_to_invest,
+                  label: 'Valor disponível para investir: ',
+                  required: true,
+                  input_html: { autocomplete: "amount_available_to_invest" }%> 
+      <%= f.input :email,
+                  label: 'Email',
+                  required: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  label: 'Senha',
+                  required: true,
+                  hint: ("Mínimo de caracteres: #{@minimum_password_length}" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  label: 'Confirme sua senha',
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
 
-  <div class="form-inputs form-group container col-sm-8 mt-4 mb-4 hide">
-    <%= f.input :name,
-                label: 'Nome',
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" }%>    
-    <%= f.input :document,
-                label: 'Documento',
-                required: true,
-                input_html: { autocomplete: "document" }%>  
-    <%= f.input :linkedin,
-                label: 'Linkedin',
-                required: true,
-                input_html: { autocomplete: "linkedin" }%>  
-    <%= f.input :birth_day,
-                label: 'Data de Nascimento',
-                as: :date, html5: true,
-                required: true,
-                input_html: { autocomplete: "birth_day" }%> 
-    <%= f.input :amount_available_to_invest,
-                label: 'Valor disponível para investir: ',
-                required: true,
-                input_html: { autocomplete: "amount_available_to_invest" }%> 
-    <%= f.input :email,
-                label: 'Email',
-                required: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                label: 'Senha',
-                required: true,
-                hint: ("Mínimo de caracteres: #{@minimum_password_length}" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                label: 'Confirme sua senha',
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
-
-  <div class="form-inputs form-group container col-sm-8 mt-4 mb-4">
-    <%= f.button :submit, "Cadastrar", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-inputs form-group col-sm-8 mt-4 mb-4">
+      <%= f.button :submit, "Cadastrar", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
 
 
