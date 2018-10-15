@@ -7,4 +7,5 @@ class Idea < ApplicationRecord
     "#{self.estimated_time_to_profit} meses"
   end
 
+    belongs_to :user
 end
