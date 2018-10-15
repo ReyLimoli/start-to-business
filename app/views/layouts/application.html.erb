@@ -11,17 +11,6 @@
 
   <body>
     <%= render "shared/header" %>
-    <% if notice %>
-      <div class="col-sm-6 mt-4 mb-4 badge-warning">
-        <p><%= notice %></p>
-      </div>
-    <% end %>
-
-    <% if alert %>
-      <div class="col-sm-6 mt-4 mb-4 badge-danger">
-        <p><%= alert %></p>
-      </div>
-    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -60,4 +60,19 @@ feature 'idealizer see his own ideias' do
         expect(page).not_to have_css('li', text: '20 meses')
         expect(page).not_to have_css('li', text: 'Spider')
     end
+    
+    scenario 'and not have ideas to show' do
+        user = User.create!(name: 'Aparecida', email: 'user3@user.com', 
+                            password:'123456', document: 123456, 
+                            linkedin: 'linkedin', birth_day: 10/05/2016)
+                          
+        visit root_path
+        click_on 'Logar'
+        fill_in 'Email', with: user.email
+        fill_in 'Senha', with: user.password
+        click_on 'Entrar'
+        click_on 'Minhas ideias'
+
+        expect(page).to have_content('Não há ideias cadastradas')
+    end
 end

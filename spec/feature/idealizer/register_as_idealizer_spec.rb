@@ -19,4 +19,27 @@ feature 'visitor register as an idealizer' do
   
         expect(page).to have_content('Cadastro efetuado com sucesso.')
     end
+
+    scenario 'not register with blank fields' do
+
+        visit root_path
+        click_on 'Cadastre-se'
+        choose 'Idealizador'
+
+        fill_in 'Nome', with: ''
+        fill_in 'Documento', with: ''
+        fill_in 'Linkedin', with: '' 
+        fill_in 'Data de Nascimento', with: ''
+        fill_in 'Email', with: ''
+        fill_in 'Senha', with: ''
+        fill_in 'Confirme sua senha', with: 'teste123**'
+        click_on 'Cadastrar'
+      
+        expect(page).to have_content('Nome não pode ficar em branco')
+        expect(page).to have_content('Documento não pode ficar em branco')
+        expect(page).to have_content('Linkedin não pode ficar em branco')
+        expect(page).to have_content('Data de Nascimento não pode ficar em branco')
+        expect(page).to have_content('Email não pode ficar em branco')
+        expect(page).to have_content('Senha não pode ficar em branco')
+    end
 end
