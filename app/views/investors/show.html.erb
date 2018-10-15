@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mt-4 mb-4">
+      <h2 class="mb-4"><%= @investor.name %></h2>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>e-mail: </strong><%= @investor.email %></li>
+                    <li class="list-group-item"><strong>Valor disponível para investir: </strong> R$ <%= @investor.amount_available_to_invest %> </li>
+                </ul>
+                <div class="card-body">
+                    <a href="<%= investor %>">Ver perfil</a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="card-link">Enviar mensagem</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
