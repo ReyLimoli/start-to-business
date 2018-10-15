@@ -29,15 +29,12 @@ feature 'Investor_view_all_ideas' do
     within "#idea-#{idea.id}" do
       click_on 'Ver detalhes'
     end
-    expect(current_path).to eq idea_path
+    expect(current_path).to eq idea_path(idea.id)
     expect(page).to have_css('h1', text: 'Invenção da roda')
     expect(page).to have_css('p', text: 'Nova forma de utilizar a roda')
     expect(page).to have_css('p', text: '3 meses')
     expect(page).to have_css('p', text: 'R$ 10000,00')
     expect(page).to have_css('p', text: '24 meses')
-
-
-
   end
 
 end
