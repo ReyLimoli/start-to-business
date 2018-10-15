@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   
   root to: "home#index"
   resources :ideas, only: [:show, :index]
-  resources :investors, :only => [:index, :show]
+  resources :investors, only: [:index, :show]
 
 end

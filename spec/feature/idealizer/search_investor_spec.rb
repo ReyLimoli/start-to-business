@@ -21,7 +21,7 @@ feature 'idealizer search investor' do
 
     visit root_path
     
-   click_on 'Encontre um investidor'
+    click_on 'Encontre um investidor'
    
     expect(page).to have_content('Investidores')
     expect(page).to have_css('h5', text: 'Augusto')
