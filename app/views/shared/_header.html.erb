@@ -1,0 +1,18 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'index') %>" href="<%= root_path %>">Home</a>
+      </li>
+      <li class="nav-item">
+        <% unless user_signed_in? %>
+          <a class="nav-link <%= 'active' if(params[:controller] == 'devise/registrations' && params[:action] == 'new') %>" href="<%= new_user_registration_path %>">Cadastrar como investidor</a>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Logout', destroy_user_session_path, method:'delete', class: 'nav-link') if user_signed_in?%>
+      </li>
+    </ul>
+  </div>
+</nav>
