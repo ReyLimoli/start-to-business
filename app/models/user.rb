@@ -3,10 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   attr_accessor :user_type
-  
+
   validates :name, :document, :linkedin, :birth_day, presence: true
   validate :check_amount
-  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
