@@ -36,5 +36,4 @@ feature 'Investor_view_all_ideas' do
     expect(page).to have_css('p', text: 'R$ 10000,00')
     expect(page).to have_css('p', text: '24 meses')
   end
-
 end
