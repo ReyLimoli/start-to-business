@@ -1,0 +1,11 @@
+<%= flash[:alert]%>
+<h1>Tenho uma ideia</h1>
+
+<%= simple_form_for @idea do |f| %>
+  <%= f.input :title, label: 'Título' %>
+  <%= f.input :description, label: 'Descrição',as: :text %>
+  <%= f.input :estimated_project_time, label: 'Tempo estimado de projeto' %>
+  <%= f.input :initial_investment_value, label: 'Valor inicial do investimento' %>
+   <%= f.input :estimated_time_to_profit, label: 'Tempo estimado para retorno' %>
+  <%= f.button :submit , 'Enviar Ideia'%>
+<% end %>
