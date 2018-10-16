@@ -63,7 +63,7 @@ feature 'idealizer see his own ideias' do
   scenario 'and not have ideas to show' do
     user = User.create!(name: 'Aparecida', email: 'user3@user.com',
                         password: '123456', document: 123_456,
-                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+                        linkedin: 'linkedin', birth_day: '10/05/2016')
 
     visit root_path
     click_on 'Logar'
