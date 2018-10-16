@@ -26,7 +26,9 @@
     </ul>
     <ul class="nav navbar-nav justify-content-end">
       <li class="nav-item">
-        <a class="nav-link <%= 'active' if(params[:controller] == 'investor' && params[:action] == 'index') %>" href="<%= investors_path %>">Encontre um investidor</a>
+        <% if user_signed_in? %>
+          <a class="nav-link <%= 'active' if(params[:controller] == 'investor' && params[:action] == 'index') %>" href="<%= investors_path %>">Encontre um investidor</a>
+        <% end %>
       </li>
     </ul>
   </div>
