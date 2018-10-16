@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Teste jQuery</title>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<h1>Olar</h1>
+
+		<input id="user_type_investor" type="radio" name="user_type" value="investor">Investidor<br>
+  		<input id="user_type_idealizer" type="radio" name="user_type" value="idealizer">Idealizador<br>
+
+		<div id="to_be_hidden">Elemento que dever ser escondido</div>
+		<script type="text/javascript">
+			jQuery("#user_type_investor").click(function(){
+				jQuery("div.user_amount_available_to_invest").show();
+			});
+
+			jQuery("#user_type_idealizer").click(function(){
+				jQuery("div.user_amount_available_to_invest").hide();
+			});
+		</script>
+	</body>
+</html>
