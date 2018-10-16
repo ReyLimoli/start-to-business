@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :ideas
+  has_many :ideas, dependent: :nullify
 
   attr_accessor :user_type
 
@@ -11,9 +11,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def check_amount
-    if user_type == 'investor' && amount_available_to_invest.blank?
-      errors[:amount_available_to_invest] << 'não pode ficar em branco'
-    end
+    return unless user_type == 'investor' && amount_available_to_invest.blank?
+
+    errors[:amount_available_to_invest] << 'não pode ficar em branco'
   end
 end
-
