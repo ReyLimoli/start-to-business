@@ -4,7 +4,7 @@ feature 'create_ideas' do
   scenario 'successfully' do
     user = User.create!(name: 'Aparecida', email: 'user@user.com',
                         password: '123456', document: 123_456,
-                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+                        linkedin: 'linkedin', birth_day: '2016-05-10')
 
     visit root_path
     click_on 'Logar'
@@ -26,7 +26,7 @@ institucional no qual pudesse avaliar professores"
     expect(page).to have_content("Eu como aluno gostaria de ter um sistema \
 institucional no qual pudesse avaliar professores")
     expect(page).to have_css('p', text: '18 meses')
-    expect(page).to have_content('7980.0')
+    expect(page).to have_content('R$ 7.980,00')
     expect(page).to have_content('15 meses')
     expect(page).to have_content('Sua ideia foi criada com sucesso!')
   end
@@ -36,7 +36,7 @@ institucional no qual pudesse avaliar professores")
 
     user = User.create!(name: 'Aparecida', email: 'user@user.com',
                         password: '123456', document: 123_456,
-                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+                        linkedin: 'linkedin', birth_day: '2016-05-10')
 
     visit root_path
     click_on 'Logar'
