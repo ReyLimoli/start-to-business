@@ -19,6 +19,9 @@
                         <li class="list-group-item"><strong>Valor disponível para investir: </strong> R$ <%= investor.amount_available_to_invest %> </li>
                     </ul>
                     <div class="card-body">
+                        <a href="<%= investor_path(investor) %>">Ver perfil</a>
+                    </div>
+                    <div class="card-body">
                         <a href="#" class="card-link">Enviar mensagem</a>
                     </div>
                 </div>
