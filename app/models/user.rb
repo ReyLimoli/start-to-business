@@ -11,7 +11,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def check_amount
-    if user_type=='investor' && amount_available_to_invest.blank?
+    if user_type == 'investor' && amount_available_to_invest.blank?
       errors[:amount_available_to_invest] << 'não pode ficar em branco'
     end
   end
