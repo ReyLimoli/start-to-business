@@ -16,25 +16,25 @@
 <% end %>
 
 <div class="container-fluid">
-    <div class="row justify-content-center">
-        <% @ideas.each do |idea| %>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= idea.title %></h5>
-                        <p class="card-text"><%= idea.description %></p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Tempo estimado: </strong><%= idea.estimated_project_time %> meses </li>
-                        <li class="list-group-item"><strong>Valor inicial do investimento: </strong> R$ <%= idea.initial_investment_value %> </li>
-                        <li class="list-group-item"><strong>Tempo estimado para retorno: </strong><%= idea.estimated_time_to_profit %> meses</li>
-                        <li class="list-group-item"><strong>Idealizador: </strong><%= idea.user.name %></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Editar</a>
-                    </div>
-                </div>
-            </div>
-        <% end %>
-    </div>
+  <div class="row justify-content-center">
+    <% @ideas.each do |idea| %>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= idea.title %></h5>
+            <p class="card-text"><%= idea.description %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Tempo estimado: </strong><%= t('months', count: idea.estimated_project_time) %> </li>
+            <li class="list-group-item"><strong>Valor inicial do investimento: </strong> <%= number_to_currency(idea.initial_investment_value) %> </li>
+            <li class="list-group-item"><strong>Tempo estimado para retorno: </strong><%= t('months', count: idea.estimated_time_to_profit) %> </li>
+            <li class="list-group-item"><strong>Idealizador: </strong><%= idea.user.name %></li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Editar</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
