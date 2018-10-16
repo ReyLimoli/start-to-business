@@ -1,20 +1,24 @@
 require 'rails_helper'
 
-feature 'Investor_view_all_ideas' do 
+feature 'Investor_view_all_ideas' do
   scenario 'successfully' do
-    investor = User.create!(name: 'Aparecida', email: 'user1234@user.com', 
-                        password:'123456', document: 123456, 
-                        linkedin: 'linkedin', birth_day: 10/05/2016, 
-                        amount_available_to_invest: '600')
-    user = User.create!(name: 'Aparecida', email: 'user2@user.com', 
-                        password:'123456', document: 123456, 
-                        linkedin: 'linkedin', birth_day: 10/05/2016)
-    idea = create(:idea, title: 'Invenção da roda', description: 'Nova forma de utilizar a roda',
-                       estimated_project_time: 3, initial_investment_value: 10000.00,
-                       estimated_time_to_profit: 24, user: user)
-    idea2 = create(:idea, title: 'Invenção da Lampada', description: 'Ilumine o mundo ao seu redor',
-                        estimated_project_time: 4, initial_investment_value: 3000.00,
-                        estimated_time_to_profit: 12, user: user)
+    investor = User.create!(name: 'Aparecida', email: 'user1234@user.com',
+                            password: '123456', document: 123_456,
+                            linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
+                            amount_available_to_invest: '600')
+    user = User.create!(name: 'Aparecida', email: 'user2@user.com',
+                        password: '123456', document: 123_456,
+                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+    create(:idea, title: 'Invenção da roda',
+                  description: 'Nova forma de utilizar a roda',
+                  estimated_project_time: 3,
+                  initial_investment_value: 10_000.00,
+                  estimated_time_to_profit: 24, user: user)
+    create(:idea, title: 'Invenção da Lampada',
+                  description: 'Ilumine o mundo ao seu redor',
+                  estimated_project_time: 4,
+                  initial_investment_value: 3000.00,
+                  estimated_time_to_profit: 12, user: user)
 
     visit root_path
 
@@ -31,16 +35,18 @@ feature 'Investor_view_all_ideas' do
   end
 
   scenario 'Investor view idea details' do
-    investor = User.create!(name: 'Aparecida', email: 'user1234@user.com', 
-                            password:'123456', document: 123456, 
-                            linkedin: 'linkedin', birth_day: 10/05/2016, 
+    investor = User.create!(name: 'Aparecida', email: 'user1234@user.com',
+                            password: '123456', document: 123_456,
+                            linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
                             amount_available_to_invest: '600')
-    user = User.create!(name: 'Aparecida', email: 'user2@user.com', 
-                        password:'123456', document: 123456, 
-                        linkedin: 'linkedin', birth_day: 10/05/2016)
-    idea = create(:idea, title: 'Invenção da roda', description: 'Nova forma de utilizar a roda',
-                  estimated_project_time: 3, initial_investment_value: 10000.00,
-                  estimated_time_to_profit: 24, user: user )
+    user = User.create!(name: 'Aparecida', email: 'user2@user.com',
+                        password: '123456', document: 123_456,
+                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+    idea = create(:idea, title: 'Invenção da roda',
+                         description: 'Nova forma de utilizar a roda',
+                         estimated_project_time: 3,
+                         initial_investment_value: 10_000.00,
+                         estimated_time_to_profit: 24, user: user)
 
     visit root_path
 
@@ -48,7 +54,7 @@ feature 'Investor_view_all_ideas' do
     fill_in 'Email', with: investor.email
     fill_in 'Senha', with: investor.password
     click_on 'Entrar'
-    
+
     within "#idea-#{idea.id}" do
       click_on 'Ver detalhes'
     end
@@ -60,15 +66,15 @@ feature 'Investor_view_all_ideas' do
     expect(page).to have_css('p', text: '24 meses')
   end
 
-  scenario 'cannot see ideas unless is signed in' do 
-
-    user = User.create!(name: 'Aparecida', email: 'user2@user.com', 
-                        password:'123456', document: 123456, 
-                        linkedin: 'linkedin', birth_day: 10/05/2016)
-    idea = create(:idea, title: 'Invenção da roda', description: 'Nova forma de utilizar a roda',
-                  estimated_project_time: 3, initial_investment_value: 10000.00,
+  scenario 'cannot see ideas unless is signed in' do
+    user = User.create!(name: 'Aparecida', email: 'user2@user.com',
+                        password: '123456', document: 123_456,
+                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+    create(:idea, title: 'Invenção da roda',
+                  description: 'Nova forma de utilizar a roda',
+                  estimated_project_time: 3,
+                  initial_investment_value: 10_000.00,
                   estimated_time_to_profit: 24, user: user)
- 
 
     visit root_path
 

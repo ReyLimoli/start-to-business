@@ -4,8 +4,8 @@ class IdeasController < ApplicationController
   def show
     @idea = Idea.find(params[:id])
   end
-  
+
   def index
-      @ideas = Idea.where(user_id: current_user.id)  
+    @ideas = Idea.where(user_id: current_user.id)
   end
 end
