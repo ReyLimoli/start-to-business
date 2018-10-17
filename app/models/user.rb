@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :ideas, dependent: :nullify
-  has_many :proposals
+  has_many :proposals, dependent: :nullify
 
   attr_accessor :user_type
 

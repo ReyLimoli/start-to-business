@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'investor send proposal' do
   scenario 'successfully' do
-
     investor = User.create!(name: 'Aparecida', email: 'investor@user.com',
                             password: '123456', document: 123_456,
                             linkedin: 'linkedin', birth_day: '2016-05-10',
@@ -44,6 +43,5 @@ Comprar esta ideia")
     expect(page).to have_css('li', text: 'Dúvidas: Eu não entendi essa ideia')
     expect(page).to have_css('li', text: "Fale mais sobre sua proposta: \
 Proposta TOP")
-
   end
 end
