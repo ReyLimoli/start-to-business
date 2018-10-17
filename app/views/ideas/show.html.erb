@@ -1,20 +1,28 @@
 <%= flash[:success]%>
-<h1>Minha ideia</h1>
 
 <div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-sm-4">
+  <div class="row">
+    <div class="col-sm-6 mt-4 mb-4">
+      <h1 class="mb-4"><%= @idea.title %></h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title"><%= @idea.title %></h5>
           <p class="card-text"><%= @idea.description %></p>
         <%if !@idea.favorite?(current_user)%>
           <%= link_to favorite_idea_path(@idea), class: 'favorite-button', method: :post do %>
-            <%= image_tag 'unfavorite_heart'%>            
+            <%= image_tag 'unfavorite_heart'%>
           <% end %>
         <% else %>
             <%= link_to unfavorite_idea_path(@idea), class: 'unfavorite-button', method: :post do %>
-              <%= image_tag 'favorite_heart'%>    
+              <%= image_tag 'favorite_heart'%>
             <% end %>
         <% end %>
 
@@ -24,6 +32,11 @@
           <li class="list-group-item"><strong>Valor inicial do investimento: </strong> <%= number_to_currency @idea.initial_investment_value %> </li>
           <li class="list-group-item"><strong>Tempo estimado para retorno: </strong><p><%= t('months', count: @idea.estimated_time_to_profit) %></p></li>
         </ul>
+        <% if @proposal.nil? %>
+          <div class="card-body">
+            <a href="<%= new_idea_proposal_path(idea_id: @idea) %>" class="card-link">Deseja investir nessa ideia?</a>
+          </div>
+        <% end %>
         <div class="card-body">
           <a href="#" class="card-link">Editar</a>
         </div>
@@ -31,3 +44,26 @@
     </div>
   </div>
 </div>
+
+<% if @proposal %>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Proposta Enviada</h5>          
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Nome: </strong><%= current_user.name %></li>
+            <li class="list-group-item"><strong>Tipo de investimento: </strong> <%= @proposal.investment_type.name %> </li>
+            <li class="list-group-item"><strong>Dúvidas: </strong><%= @proposal.doubts %></li>
+            <li class="list-group-item"><strong>Fale mais sobre sua proposta: </strong><%= @proposal.details %></li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Editar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
