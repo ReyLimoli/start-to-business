@@ -5,11 +5,11 @@ feature 'idealizer search investor' do
     user_idealizer = User.create!(name: 'Aparecida',
                                   email: 'aparecida@aparecida.com',
                                   password: '123456', document: 123_456,
-                                  linkedin: 'linkedin', birth_day: '10-05-2016')
+                                  linkedin: 'linkedin', birth_day: '05-10-2016')
 
     User.create!(name: 'Augusto', email: 'augusto@augusto.com',
                  password: '123456', document: 123_456,
-                 linkedin: 'linkedin', birth_day: '10-05-2016',
+                 linkedin: 'linkedin', birth_day: '05-10-2016',
                  amount_available_to_invest: '600')
 
     Idea.create!(title: 'Suporte de geladeira',
@@ -30,7 +30,7 @@ feature 'idealizer search investor' do
     expect(page).to have_content('Investidores')
     expect(page).to have_css('h5', text: 'Augusto')
     expect(page).to have_css('li', text: 'augusto@augusto.com')
-    expect(page).to have_css('li', text: '600')
+    expect(page).to have_css('li', text: 'R$ 600,00')
 
     expect(page).not_to have_css('h5', text: 'Aparecida')
     expect(page).not_to have_css('li', text: 'aparecida@aparecida.com')
@@ -40,11 +40,11 @@ feature 'idealizer search investor' do
     user_idealizer = User.create!(name: 'Aparecida',
                                   email: 'aparecida@aparecida.com',
                                   password: '123456', document: 123_456,
-                                  linkedin: 'linkedin', birth_day: '10-05-2016')
+                                  linkedin: 'linkedin', birth_day: '05-10-2016')
 
     User.create!(name: 'Augusto', email: 'augusto@augusto.com',
                  password: '123456', document: 123_456,
-                 linkedin: 'linkedin', birth_day: '10-05-2016',
+                 linkedin: 'linkedin', birth_day: '05-10-2016',
                  amount_available_to_invest: '600')
 
     Idea.create!(title: 'Suporte de geladeira',
@@ -65,20 +65,19 @@ feature 'idealizer search investor' do
 
     expect(page).to have_css('h2', text: 'Augusto')
     expect(page).to have_css('li', text: 'augusto@augusto.com')
-    expect(page).to have_css('li', text: '123456')
-    expect(page).to have_css('li', text: '2016-05-10')
-    expect(page).to have_css('li', text: '600')
+    expect(page).to have_css('li', text: '05/10/2016')
+    expect(page).to have_css('li', text: 'R$ 600,00')
   end
 
   scenario 'should be logged in to see investors' do
     user_idealizer = User.create!(name: 'Aparecida',
                                   email: 'aparecida@aparecida.com',
                                   password: '123456', document: 123_456,
-                                  linkedin: 'linkedin', birth_day: '10-05-2016')
+                                  linkedin: 'linkedin', birth_day: '05-10-2016')
 
     User.create!(name: 'Augusto', email: 'augusto@augusto.com',
                  password: '123456', document: 123_456,
-                 linkedin: 'linkedin', birth_day: '10-05-2016',
+                 linkedin: 'linkedin', birth_day: '05-10-2016',
                  amount_available_to_invest: '600')
 
     Idea.create!(title: 'Suporte de geladeira',
