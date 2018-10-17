@@ -1,19 +1,11 @@
-
 <div class="container col-sm-8 mt-4 mb-4">
   <h2>Proposta de Investimento</h2>
 </div>
 
-<% if @proposal.errors.any? %>
-  <%= @proposal.errors.full_messages.each do |message|  %>
-      <%= message %>
-  <% end %>
-<% end %>
-
-
 <div class="container col-sm-8 mt-4 mb-4">
   <%= simple_form_for([@idea, @proposal]) do |f| %>
 
-    <div class="form-inputs form-group col-sm-12 mt-4 mb-4 hide">
+    <div class="form-inputs form-group col-sm-12 mt-4 mb-4">
       <%= f.association :investment_type %>
       <%= f.input :doubts %>
       <%= f.input :details %>
@@ -22,4 +14,3 @@
 
   <% end %>
 </div>
-                          

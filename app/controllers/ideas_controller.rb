@@ -1,4 +1,8 @@
 class IdeasController < ApplicationController
+  def index
+    @ideas = Idea.where(user_id: current_user.id)
+  end
+
   def new
     @idea = Idea.new
   end
@@ -19,10 +23,7 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find(params[:id])
-  end
-
-  def index
-    @ideas = Idea.where(user_id: current_user)
+    @proposal = @idea.proposal_from(current_user)
   end
 
   private

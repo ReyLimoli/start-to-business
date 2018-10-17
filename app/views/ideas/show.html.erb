@@ -17,11 +17,35 @@
         <div class="card-body">
           <a href="#" class="card-link">Editar</a>
         </div>
-        <%# user.hasproposal?() %>
-        <div class="card-body">
-          <a href="<%= new_idea_proposal_path(idea_id: @idea) %>" class="card-link">Deseja investir nessa ideia?</a>
-        </div>
+        <% if @proposal.nil? %>
+          <div class="card-body">
+            <a href="<%= new_idea_proposal_path(idea_id: @idea) %>" class="card-link">Deseja investir nessa ideia?</a>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<% if @proposal %>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Proposta Enviada</h5>          
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Nome: </strong><%= current_user.name %></li>
+            <li class="list-group-item"><strong>Tipo de investimento: </strong> <%= @proposal.investment_type.name %> </li>
+            <li class="list-group-item"><strong>Dúvidas: </strong><%= @proposal.doubts %></li>
+            <li class="list-group-item"><strong>Fale mais sobre sua proposta: </strong><%= @proposal.details %></li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Editar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

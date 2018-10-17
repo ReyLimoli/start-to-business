@@ -8,8 +8,8 @@ class ProposalsController < ApplicationController
 
   def create
     @idea = Idea.find(params[:idea_id])
-    @proposal = @idea.proposals.new(params.require(:proposal).permit(:investment_type_id,
-                                                                     :doubts, :details))
+    @proposal = @idea.proposals.new(params.require(:proposal)
+      .permit(:investment_type_id, :doubts, :details))
     @proposal.user = current_user
 
     if @proposal.save
