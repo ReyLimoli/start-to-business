@@ -17,6 +17,10 @@
         <div class="card-body">
           <a href="#" class="card-link">Editar</a>
         </div>
+        <%# user.hasproposal?() %>
+        <div class="card-body">
+          <a href="<%= new_idea_proposal_path(idea_id: @idea) %>" class="card-link">Deseja investir nessa ideia?</a>
+        </div>
       </div>
     </div>
   </div>

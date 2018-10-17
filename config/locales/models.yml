@@ -8,6 +8,10 @@ pt-BR:
         birth_day: Data de Nascimento
         name: Nome
         amount_available_to_invest: Valor disponível para investir
+      proposal:
+         investment_type: Tipo de Investimento
+         doubts: Dúvidas
+         details: Fale mais sobre sua proposta
   months:
     one: '1 mês'
     other: '%{count} meses'
