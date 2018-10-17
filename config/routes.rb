@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   
   root to: "home#index"
+
+  get '/home/about_us'
   
   resources :ideas, only: [:show, :new, :create, :index] do
     member do
