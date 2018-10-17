@@ -14,7 +14,18 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <p class="card-text"><strong>Descrição: </strong><%= @idea.description %></p>
+          <h5 class="card-title"><%= @idea.title %></h5>
+          <p class="card-text"><%= @idea.description %></p>
+        <%if !@idea.favorite?(current_user)%>
+          <%= link_to favorite_idea_path(@idea), class: 'favorite-button', method: :post do %>
+            <%= image_tag 'unfavorite_heart'%>
+          <% end %>
+        <% else %>
+            <%= link_to unfavorite_idea_path(@idea), class: 'unfavorite-button', method: :post do %>
+              <%= image_tag 'favorite_heart'%>
+            <% end %>
+        <% end %>
+
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><strong>Tempo estimado: </strong><%= t('months', count: @idea.estimated_project_time) %></li>

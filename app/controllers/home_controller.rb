@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  def about_us; end
+
   def index
     if user_signed_in? && !current_user.amount_available_to_invest.nil?
       @ideas = Idea.all

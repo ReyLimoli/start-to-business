@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :ideas, dependent: :nullify
   has_many :proposals, dependent: :nullify
+  has_many :favorite_idea, dependent: :destroy
 
   attr_accessor :user_type
 

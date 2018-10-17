@@ -9,4 +9,11 @@ class Idea < ApplicationRecord
     proposals.find_by(user: user)
   end
   # proposta de uma idea especifica de um usuario
+  has_many :favorite_ideas, dependent: :destroy
+
+  def favorite?(user)
+    favorite_ideas.where(user: user, active: true).any?
+  end
+
+  has_many :investors, dependent: :nullify
 end

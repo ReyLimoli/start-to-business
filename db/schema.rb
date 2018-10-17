@@ -12,6 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2018_10_17_010154) do
 
+  create_table "favorite_ideas", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "idea_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active", default: true
+    t.index ["idea_id"], name: "index_favorite_ideas_on_idea_id"
+    t.index ["user_id"], name: "index_favorite_ideas_on_user_id"
+  end
+
   create_table "ideas", force: :cascade do |t|
     t.string "title"
     t.string "description"

@@ -26,6 +26,21 @@ class IdeasController < ApplicationController
     @proposal = @idea.proposal_from(current_user)
   end
 
+  def favorite
+    @idea = Idea.find(params[:id])
+    @favorite_idea = FavoriteIdea.new(idea: @idea, user: current_user)
+    @favorite_idea.save
+    redirect_to idea_path(@idea)
+  end
+
+  def unfavorite
+    @idea = Idea.find(params[:id])
+    @favorite_idea = @idea.favorite_ideas.find_by(user: current_user)
+    @favorite_idea.active = false
+    @favorite_idea.save
+    redirect_to idea_path(@idea)
+  end
+
   private
 
   def idea_params
