@@ -7,4 +7,5 @@ class Idea < ApplicationRecord
   def favorite?(user)
     favorite_ideas.where(user: user, active: true).any?
   end
+  has_many :investors, dependent: :nullify
 end
