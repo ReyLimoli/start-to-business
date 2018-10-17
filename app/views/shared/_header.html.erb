@@ -28,8 +28,10 @@
           <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'new') %>" href="<%= new_idea_path %>">Tenho uma Ideia</a>
         <% end %>
       </li>
+    </ul>
 
-      <li class="navbar-brand justify-content-end">
+    <ul class="nav navbar-nav justify-content-end">
+      <li class="navbar-brand">
         <% unless user_signed_in? %>
           <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'index') %>" href="<%= user_session_path %>">Logar</a>
         <% end %>
@@ -38,10 +40,11 @@
       <li class="navbar-brand justify-content-end">
         <%= link_to('Logout', destroy_user_session_path, method:'delete', class: 'nav-link') if user_signed_in?%>
       </li>
-
     </ul>
+
   </div>
 </nav>
+
 
 <% if notice %>
   <div class="alert alert-success" role="alert">

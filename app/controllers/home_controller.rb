@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
   def about_us; end
 
   def index
@@ -9,5 +8,4 @@ class HomeController < ApplicationController
       @ideas = current_user.ideas
     end
   end
-
 end
