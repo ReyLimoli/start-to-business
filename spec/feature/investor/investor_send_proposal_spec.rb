@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'investor send proposal' do
   scenario 'successfully' do
-    investor = User.create!(name: 'Aparecida', email: 'user1234@user.com',
+    investor = User.create!(name: 'Aparecida', email: 'investor@user.com',
                             password: '123456', document: 123_456,
                             linkedin: 'linkedin', birth_day: '2016-05-10',
                             amount_available_to_invest: '600')
@@ -36,7 +36,7 @@ feature 'investor send proposal' do
 
     expect(current_path).to eq idea_path(idea.id)
     expect(page).not_to have_content('Deseja investir nessa ideia?')
-    expect(page).to have_css('h5', text: idea.title)
+    expect(page).to have_css('h1', text: idea.title)
     expect(page).to have_css('li', text: idea.user.name)
     expect(page).to have_css('li', text: "Tipo de investimento: \
 Comprar ideia")

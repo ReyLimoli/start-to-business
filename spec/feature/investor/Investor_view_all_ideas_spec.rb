@@ -28,10 +28,7 @@ feature 'Investor_view_all_ideas' do
     click_on 'Entrar'
 
     expect(page).to have_css('h1', text: 'Invenção da roda')
-    expect(page).to have_css('p', text: 'Nova forma de utilizar...')
-
     expect(page).to have_css('h1', text: 'Invenção da Lampada')
-    expect(page).to have_css('p', text: 'Ilumine o mundo ao seu...')
   end
 
   scenario 'Investor view idea details' do
@@ -59,7 +56,7 @@ feature 'Investor_view_all_ideas' do
       click_on 'Ver detalhes'
     end
     expect(current_path).to eq idea_path(idea.id)
-    expect(page).to have_css('h5', text: 'Invenção da roda')
+    expect(page).to have_css('h1', text: 'Invenção da roda')
     expect(page).to have_css('p', text: 'Nova forma de utilizar a roda')
     expect(page).to have_css('li', text: '3 meses')
     expect(page).to have_css('li', text: 'R$ 10.000,00')
