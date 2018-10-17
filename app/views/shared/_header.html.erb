@@ -6,6 +6,11 @@
         <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'index') %>" href="<%= root_path %>">Home</a>
       </li>
       <li class="navbar-brand">
+        <% if user_signed_in? %>
+          <a class="w3-bar-item w3-button" href="<%= new_idea_path %>">Tenho uma Ideia</a>
+        <% end %>
+      </li>
+      <li class="navbar-brand">
         <% unless user_signed_in? %>
           <a class="nav-link <%= 'active' if(params[:controller] == 'devise/registrations' && params[:action] == 'new') %>" href="<%= new_user_registration_path %>">Cadastre-se</a>
         <% end %>

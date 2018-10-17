@@ -1,16 +1,28 @@
 <div class="mt-4 mb-4">
 <div class="margin jumbotron jumbotron-fluid">
-    <div class='container'>
-        <div class="row">
-            <div class="col-sm-8">
-                <h1 class="display-4">Bem-vindo ao S2Business</h1>
-                <p class="lead">Onde você pode investir em uma ideia e criar a sua!</p>
-            </div>
-        </div>
+  <div class='container'>
+    <div class="row">
+      <div class="col-sm-8">
+        <h1 class="display-4">Bem-vindo ao S2Business</h1>
+        <p class="lead">Onde você pode investir em uma ideia e criar a sua!</p>
+      </div>
     </div>
+  </div>
 </div>
 </div>
 
 <div class="bg mt-0">
 </div>
+
+<% if user_signed_in? %>
+  <% @ideas.each do |idea|%>
+  <div id="idea-<%=idea.id%>">
+    <h1><%= idea.title %></h1>
+    <p><%= truncate(idea.description, length: 25) { link_to 'Ver detalhes', idea } %></p>
+    <p><%= number_to_currency(idea.initial_investment_value) %></p>
+    <p><%= t('months', count: idea.estimated_project_time) %></p>
+    <p><%= t('months', count: idea.estimated_time_to_profit) %></p>
+  </div>
+  <% end%>
+<% end %>
 
