@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'investor send proposal' do
   scenario 'successfully' do
 
-    investor = User.create!(name: 'Aparecida', email: 'user1234@user.com',
+    investor = User.create!(name: 'Aparecida', email: 'investor@user.com',
                             password: '123456', document: 123_456,
                             linkedin: 'linkedin', birth_day: '2016-05-10',
                             amount_available_to_invest: '600')
