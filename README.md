@@ -1,24 +1,54 @@
 # README
+# Start to Business
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+System of relationship between investors and idealizers
+### Prerequisites
 
-Things you may want to cover:
+*Ruby version 2.5.1 
 
-* Ruby version
+*Rails 5.2.1
 
-* System dependencies
+*List of gems in gem_dependency.txt
 
-* Configuration
+### Installing
 
-* Database creation
+```
+git clone https://github.com/ReyLimoli/start-to-business.git
 
-* Database initialization
+cd start-to-business
 
-* How to run the test suite
+bin/setup
 
-* Services (job queues, cache servers, search engines, etc.)
+rails db:migrate
+```
 
-* Deployment instructions
+## Running the tests
 
-* ...
+This system has automated tests with rspec and capybara
+
+Already have tests installed, do as below to run them
+
+```
+rspec
+
+
+or specify a file 
+
+rspec spec/feature/idealizer/idealizer_see_ideias_spec.rb 
+
+```
+
+## Deployment
+
+
+## Authors
+
+* **Reynaldo Limoli** 
+* **Carla Crude** 
+* **Willian Vieira** 
+* **Simone Pereira** 
+
+## Acknowledgments
+
+* Inspiration
+We are from the Web immersion team of October 2018, and with the idea of Reynaldo we challenge ourselves to deliver this complete project until Friday
