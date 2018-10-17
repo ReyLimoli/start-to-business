@@ -24,7 +24,7 @@ class IdeasController < ApplicationController
   def index
     @ideas = Idea.where(user_id: current_user)
   end
-  
+
   def favorite
     @idea = Idea.find(params[:id])
     @favorite_idea = FavoriteIdea.new(idea: @idea, user: current_user)
