@@ -3,7 +3,6 @@ class Proposal < ApplicationRecord
   belongs_to :idea
   belongs_to :user
 
-  validates :investment_type, presence: {message: "Este campo \
+  validates :investment_type, presence: { message: "Este campo \
 não pode ficar nulo"}
-
 end

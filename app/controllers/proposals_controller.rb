@@ -1,7 +1,7 @@
 class ProposalsController < ApplicationController
   before_action :authenticate_user!
-  
-  def new 
+
+  def new
     @idea = Idea.find(params[:idea_id])
     @proposal = Proposal.new
   end
@@ -9,7 +9,7 @@ class ProposalsController < ApplicationController
   def create
     @idea = Idea.find(params[:idea_id])
     @proposal = @idea.proposals.new(params.require(:proposal).permit(:investment_type_id,
-                                                        :doubts, :details))
+                                                                     :doubts, :details))
     @proposal.user = current_user
 
     if @proposal.save
