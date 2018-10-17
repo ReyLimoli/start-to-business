@@ -37,8 +37,8 @@ feature 'visitor register as an investor' do
     expect(page).to have_content('Documento não pode ficar em branco')
     expect(page).to have_content('Linkedin não pode ficar em branco')
     expect(page).to have_content('Data de Nascimento não pode ficar em branco')
-    expect(page).to have_content("Valor disponível para investir \
-não pode ficar em branco")
+    expect(page).to have_content("Valor disponível para investir não pode \
+ficar em branco")
     expect(page).to have_content('Email não pode ficar em branco')
     expect(page).to have_content('Senha não pode ficar em branco')
   end

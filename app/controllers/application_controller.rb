@@ -4,8 +4,11 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    keys = %i[name document linkedin birth_day amount_available_to_invest
-              user_type]
-    devise_parameter_sanitizer.permit(:sign_up, keys: keys)
+    devise_parameter_sanitizer.permit(
+      :sign_up, keys: %i[name document linkedin
+                         birth_day
+                         amount_available_to_invest
+                         user_type]
+    )
   end
 end
