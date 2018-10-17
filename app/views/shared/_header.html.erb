@@ -5,7 +5,10 @@
       <li class="navbar-brand">
         <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'index') %>" href="<%= root_path %>">Home</a>
       </li>
- 
+
+      <li class="navbar-brand">
+        <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'about_us') %>" href="<%= home_about_us_path %>">Sobre</a>
+      </li>
 
       <li class="navbar-brand">
         <% unless user_signed_in? %>
@@ -13,11 +16,7 @@
         <% end %>
       </li>
 
-      <li class="navbar-brand">
-        <% unless user_signed_in? %>
-          <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'index') %>" href="<%= user_session_path %>">Logar</a>
-        <% end %>
-      </li>
+
       <li class="navbar-brand">
         <% if user_signed_in? %>
           <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'index') %>" href="<%= ideas_path %>">Minhas ideias</a>
@@ -26,16 +25,20 @@
 
       <li class="navbar-brand">
         <% if user_signed_in? %>
-          <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'new') %>" href="<%= new_idea_path %>">Tenho uma ideia</a>
+          <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'new') %>" href="<%= new_idea_path %>">Tenho uma Ideia</a>
         <% end %>
       </li>
 
-      <li class="navbar-brand">
-         <%= link_to "Sobre", home_about_us_path,  class: "nav-link"%>
+      <li class="navbar-brand justify-content-end">
+        <% unless user_signed_in? %>
+          <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'index') %>" href="<%= user_session_path %>">Logar</a>
+        <% end %>
       </li>
-      <li class="navbar-brand">
+
+      <li class="navbar-brand justify-content-end">
         <%= link_to('Logout', destroy_user_session_path, method:'delete', class: 'nav-link') if user_signed_in?%>
       </li>
+
     </ul>
   </div>
 </nav>
