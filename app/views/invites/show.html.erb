@@ -1,0 +1,22 @@
+<%= flash[:success] %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mt-4 mb-4">
+      <h2 class="mb-4">Sua Indicação</h2>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Investidor indicado: </strong><%= @invite.name %></li>
+                    <li class="list-group-item"><strong>Email: </strong><%= @invite.email %> </li>
+                    <li class="list-group-item"><strong>Linkedin: </strong><%= @invite.linkedin %> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

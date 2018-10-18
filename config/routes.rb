@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   resources :investors, only: [:index, :show]
 
+  resources :invites, only: [:new, :create, :show]
+
 end

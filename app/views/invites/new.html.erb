@@ -1,0 +1,31 @@
+<div class="container col-sm-8 mt-4 mb-4">
+  <h2>Indicar Investidor</h2>
+</div>
+
+<div class="container col-sm-8 mt-4 mb-4">
+  <%= simple_form_for(@invite) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs form-group col-sm-12 mt-4 mb-4">
+      <%= f.input :name,
+                  label: 'Nome',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "name" }%>
+      <%= f.input :linkedin,
+                  label: 'Linkedin',
+                  required: true,
+                  input_html: { autocomplete: "linkedin" }%>
+      <%= f.input :email,
+                  label: 'Email',
+                  required: true,
+                  input_html: { autocomplete: "email" }%>
+    </div>
+
+    <div class="form-inputs form-group col-sm-8 mt-4 mb-4">
+      <%= f.button :submit, "Enviar", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+

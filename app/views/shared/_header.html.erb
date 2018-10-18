@@ -28,6 +28,12 @@
           <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'new') %>" href="<%= new_idea_path %>">Tenho uma Ideia</a>
         <% end %>
       </li>
+
+      <li class="navbar-brand">
+        <% if user_signed_in? %>
+          <a class="nav-link <%= 'active' if(params[:controller] == 'invites' && params[:action] == 'new') %>" href="<%= new_invite_path %>">Indique um investidor</a>
+        <% end %>
+      </li>
     </ul>
 
     <ul class="nav navbar-nav justify-content-end">
