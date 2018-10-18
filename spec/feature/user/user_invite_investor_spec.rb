@@ -45,4 +45,9 @@ para nossa plataforma")
     expect(page).to have_content('Linkedin não pode ficar em branco')
     expect(page).to have_content('Email não pode ficar em branco')
   end
+  scenario 'must be logged_in' do
+    visit new_invite_path
+
+    expect(current_path).to eq new_user_session_path
+  end
 end

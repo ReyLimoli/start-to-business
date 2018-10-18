@@ -1,4 +1,5 @@
 class InvitesController < ApplicationController
+  before_action :authenticate_user!
   def new
     @invite = Invite.new
   end
@@ -8,7 +9,7 @@ class InvitesController < ApplicationController
                                                         :linkedin, :email))
 
     if @invite.save
-      flash[:success] = "Obrigado por indicar um investidor \
+      flash[:notice] = "Obrigado por indicar um investidor \
 para nossa plataforma"
       redirect_to @invite
     else
