@@ -1,5 +1,3 @@
-<%= flash[:success]%>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-6 mt-4 mb-4">
@@ -11,7 +9,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-3">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title"><%= @idea.title %></h5>
@@ -19,11 +17,11 @@
           <p class="card-text"><%= @idea.category.name %></p>
         <%if !@idea.favorite?(current_user)%>
           <%= link_to favorite_idea_path(@idea), class: 'favorite-button', method: :post do %>
-            <%= image_tag 'unfavorite_heart'%>
+            <%= image_tag 'unfavorite_heart', size: "32x32"%>
           <% end %>
         <% else %>
             <%= link_to unfavorite_idea_path(@idea), class: 'unfavorite-button', method: :post do %>
-              <%= image_tag 'favorite_heart'%>
+              <%= image_tag 'favorite_heart', size: "32x32" %>
             <% end %>
         <% end %>
 
@@ -33,7 +31,7 @@
           <li class="list-group-item"><strong>Valor inicial do investimento: </strong> <%= number_to_currency @idea.initial_investment_value %> </li>
           <li class="list-group-item"><strong>Tempo estimado para retorno: </strong><p><%= t('months', count: @idea.estimated_time_to_profit) %></p></li>
         </ul>
-        <% if @proposal.nil? %>
+        <% if @proposal.nil? && current_user.investor?  %>
           <div class="card-body">
             <a href="<%= new_idea_proposal_path(idea_id: @idea) %>" class="card-link">Deseja investir nessa ideia?</a>
           </div>

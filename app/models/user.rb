@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :ideas, dependent: :nullify
   has_many :proposals, dependent: :nullify
-  has_many :favorite_idea, dependent: :destroy
+  has_many :favorite_ideas, dependent: :destroy
 
   attr_accessor :user_type
 
@@ -16,5 +16,13 @@ class User < ApplicationRecord
     return unless user_type == 'investor' && amount_available_to_invest.blank?
 
     errors[:amount_available_to_invest] << 'não pode ficar em branco'
+  end
+
+  def investor?
+    amount_available_to_invest
+  end
+
+  def idealizer?
+    !investor?
   end
 end

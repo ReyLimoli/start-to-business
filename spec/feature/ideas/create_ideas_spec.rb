@@ -57,11 +57,14 @@ institucional no qual pudesse avaliar professores")
     click_on 'Enviar Ideia'
 
     expect(page).to have_css('h2', text: 'Tenho uma ideia')
-    expect(page).to have_content('Título')
-    expect(page).to have_content('Descrição')
-    expect(page).to have_content('Tempo estimado de projeto')
-    expect(page).to have_content('Valor inicial do investimento')
-    expect(page).to have_content('Tempo estimado para retorno')
+    expect(page).to have_content('Título não pode ficar em branco')
+    expect(page).to have_content('Descrição não pode ficar em branco')
+    expect(page).to have_content("Tempo estimado de projeto não pode ficar \
+em branco")
+    expect(page).to have_content("Valor inicial do investimento não pode ficar \
+em branco")
+    expect(page).to have_content("Tempo estimado para retorno não pode ficar \
+em branco")
     expect(page).to have_button('Enviar Ideia')
     expect(page).to have_content('Preencha todos os campos!')
   end
