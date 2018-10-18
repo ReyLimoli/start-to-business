@@ -4,11 +4,11 @@ feature 'idealizer see his own ideias' do
   scenario 'successfully' do
     user_spider = User.create!(name: 'Spider', email: 'spider@user.com',
                                password: '123456', document: 123_456,
-                               linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+                               linkedin: 'linkedin', birth_day: '10-05-2016')
 
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
-                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+                        linkedin: 'linkedin', birth_day: '10-05-2016')
 
     Idea.create!(title: 'Suporte de geladeira',
                  description: 'A melhor invenção',

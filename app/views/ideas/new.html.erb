@@ -1,11 +1,20 @@
-<%= flash[:alert] %>
-<h1>Tenho uma ideia</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mt-4 mb-4">
+      <h2 class="mb-4">Tenho uma ideia</h2>
+    </div>
+  </div>
+</div>
 
-<%= simple_form_for @idea do |f| %>
-  <%= f.input :title, label: 'Título' %>
-  <%= f.input :description, label: 'Descrição',as: :text %>
-  <%= f.input :estimated_project_time, label: 'Tempo estimado de projeto' %>
-  <%= f.input :initial_investment_value, label: 'Valor inicial do investimento' %>
-   <%= f.input :estimated_time_to_profit, label: 'Tempo estimado para retorno' %>
-  <%= f.button :submit , 'Enviar Ideia'%>
-<% end %>
+<div class="container col-sm-6 mt-4 mb-4">
+  <%= simple_form_for @idea do |f| %>
+    <%= f.input :title, label: 'Título' %>
+    <%= f.input :description, label: 'Descrição',as: :text %>
+    <%= f.input :estimated_project_time, label: 'Tempo estimado de projeto' %>
+    <%= f.input :initial_investment_value, label: 'Valor inicial do investimento' %>
+    <%= f.input :estimated_time_to_profit, label: 'Tempo estimado para retorno' %>
+    <div class="form-actions">
+      <%= f.button :submit , 'Enviar Ideia', class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>
