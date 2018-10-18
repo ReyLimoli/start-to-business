@@ -23,6 +23,8 @@
               <%= image_tag 'favorite_heart', size: "32x32" %>
             <% end %></p>
             <p class="card-text"><%= idea.description %></p>
+            <p class="card-text"><%= idea.category.name %></p>
+
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Tempo estimado: </strong><%= t('months', count: idea.estimated_project_time) %> </li>

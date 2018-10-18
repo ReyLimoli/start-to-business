@@ -11,13 +11,14 @@ feature 'idealizer search investor' do
                  password: '123456', document: 123_456,
                  linkedin: 'linkedin', birth_day: '05-10-2016',
                  amount_available_to_invest: '600')
-
+    category_technology = Category.create(name: 'Tecnologia')
     Idea.create!(title: 'Suporte de geladeira',
                  description: 'A melhor invenção',
                  estimated_project_time: 2,
                  initial_investment_value: 400,
                  estimated_time_to_profit: 10,
-                 user: user_idealizer)
+                 user: user_idealizer,
+                 category: category_technology)
 
     visit root_path
     click_on 'Logar'
@@ -46,13 +47,14 @@ feature 'idealizer search investor' do
                  password: '123456', document: 123_456,
                  linkedin: 'linkedin', birth_day: '05-10-2016',
                  amount_available_to_invest: '600')
-
+    category_technology = Category.create(name: 'Tecnologia')
     Idea.create!(title: 'Suporte de geladeira',
                  description: 'A melhor invenção',
                  estimated_project_time: 2,
                  initial_investment_value: 400,
                  estimated_time_to_profit: 10,
-                 user: user_idealizer)
+                 user: user_idealizer,
+                 category: category_technology)
 
     visit root_path
     click_on 'Logar'
@@ -80,12 +82,15 @@ feature 'idealizer search investor' do
                  linkedin: 'linkedin', birth_day: '05-10-2016',
                  amount_available_to_invest: '600')
 
+    category_technology = Category.create(name: 'Tecnologia')
+
     Idea.create!(title: 'Suporte de geladeira',
                  description: 'A melhor invenção',
                  estimated_project_time: 2,
                  initial_investment_value: 400,
                  estimated_time_to_profit: 10,
-                 user: user_idealizer)
+                 user: user_idealizer,
+                 category: category_technology)
 
     visit root_path
 
