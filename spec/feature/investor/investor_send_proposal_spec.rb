@@ -80,10 +80,10 @@ Proposta TOP")
   end
 
   scenario 'and link do not show to idealizer' do
-    investor = User.create!(name: 'Aparecida', email: 'user1234@user.com',
-                            password: '123456', document: 123_456,
-                            linkedin: 'linkedin', birth_day: '2016-05-10',
-                            amount_available_to_invest: '600')
+    User.create!(name: 'Aparecida', email: 'user1234@user.com',
+                 password: '123456', document: 123_456,
+                 linkedin: 'linkedin', birth_day: '2016-05-10',
+                 amount_available_to_invest: '600')
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: '2016-05-10')

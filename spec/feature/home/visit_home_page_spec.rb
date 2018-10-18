@@ -11,9 +11,9 @@ dispostos a firmar parceria.")
 
   scenario 'successfully' do
     investor = User.create!(name: 'Aparecida', email: 'user1234@user.com',
-                        password: '123456', document: 123_456,
-                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
-                        amount_available_to_invest: '600')
+                            password: '123456', document: 123_456,
+                            linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
+                            amount_available_to_invest: '600')
     visit root_path
 
     click_on 'Logar'
@@ -23,5 +23,15 @@ dispostos a firmar parceria.")
 
     expect(page).not_to have_content('Minhas ideias')
     expect(page).not_to have_content('Tenho uma ideia')
+  end
+
+  scenario 'must be logged_in to see my ideas' do
+    visit ideas_path
+    expect(current_path).to eq root_path
+  end
+
+  scenario 'must be logged_in to see new idea' do
+    visit new_idea_path
+    expect(current_path).to eq root_path
   end
 end
