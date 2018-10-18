@@ -1,10 +1,11 @@
-.hide{
-    display: none;
-}
-
-body, html {
+html {
     height: 100%;
     margin: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
 }
 
 .bg {
@@ -12,10 +13,15 @@ body, html {
     background-image: url("investor_img.jpg");
 
     /* Full height */
-    height: 50%; 
+    height: 50%;
 
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.stb-main{
+  flex: 1 0 auto;
+}
+
