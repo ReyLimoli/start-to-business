@@ -6,11 +6,14 @@ feature 'Investor_to_interest_idea' do
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
                         amount_available_to_invest: '600')
+    category_technology = Category.create(name: 'Tecnologia')
+
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
 
     visit root_path
 
@@ -39,11 +42,14 @@ feature 'Investor_to_interest_idea' do
                         linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
                         amount_available_to_invest: '600')
 
+    category_technology = Category.create(name: 'Tecnologia')
+
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
     FavoriteIdea.create(user: user, idea: idea)
 
     visit root_path
@@ -73,11 +79,15 @@ feature 'Investor_to_interest_idea' do
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
                         amount_available_to_invest: '600')
+
+    category_technology = Category.create(name: 'Tecnologia')
+
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
 
     visit root_path
 
@@ -107,11 +117,14 @@ feature 'Investor_to_interest_idea' do
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
                         amount_available_to_invest: '600')
+
+    category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
 
     visit root_path
 

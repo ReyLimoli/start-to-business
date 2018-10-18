@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2018_10_18_001452) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorite_ideas", force: :cascade do |t|
     t.integer "user_id"
     t.integer "idea_id"
@@ -31,6 +37,8 @@ ActiveRecord::Schema.define(version: 2018_10_18_001452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_ideas_on_category_id"
     t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
