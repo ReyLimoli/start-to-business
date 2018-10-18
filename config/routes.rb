@@ -14,5 +14,8 @@ Rails.application.routes.draw do
   end
 
   resources :investors, only: [:index, :show]
+
+  resources :invites, only: [:new, :create, :show]
+
   resources :favorite_ideas, only: [:index]
 end

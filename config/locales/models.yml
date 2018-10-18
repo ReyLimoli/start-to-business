@@ -9,9 +9,11 @@ pt-BR:
         name: Nome
         amount_available_to_invest: Valor disponível para investir
       proposal:
-         investment_type: Tipo de Investimento
-         doubts: Dúvidas
-         details: Fale mais sobre sua proposta
+        investment_type: Tipo de Investimento
+        doubts: Dúvidas
+        details: Fale mais sobre sua proposta
+      invite:
+        name: Nome
       idea:
         title: Título
         description: Descrição
