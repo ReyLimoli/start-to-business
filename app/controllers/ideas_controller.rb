@@ -5,11 +5,11 @@ class IdeasController < ApplicationController
 
   def new
     @idea = Idea.new
+    @categories = Category.all
   end
 
   def create
     @idea = Idea.new(idea_params)
-
     @idea.user = current_user
 
     if @idea.save
@@ -45,6 +45,7 @@ class IdeasController < ApplicationController
   def idea_params
     params.require(:idea).permit(:title, :description, :estimated_project_time,
                                  :initial_investment_value,
-                                 :estimated_time_to_profit)
+                                 :estimated_time_to_profit,
+                                 :category_id)
   end
 end

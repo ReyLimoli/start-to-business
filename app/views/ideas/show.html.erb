@@ -8,6 +8,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= @idea.title %></h5>
           <p class="card-text"><%= @idea.description %></p>
+          <p class="card-text"><%= @idea.category.name %></p>
         <%if !@idea.favorite?(current_user)%>
           <%= link_to favorite_idea_path(@idea), class: 'favorite-button', method: :post do %>
             <%= image_tag 'unfavorite_heart'%>            

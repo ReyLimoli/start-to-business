@@ -9,27 +9,30 @@ feature 'idealizer see his own ideias' do
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+    category_technology = Category.create(name: 'Tecnologia')
+    category_new_support = Category.create(name: 'Saúde')
+    category_spider = Category.create(name: 'Aranha')
 
     Idea.create!(title: 'Suporte de geladeira',
                  description: 'A melhor invenção',
                  estimated_project_time: 2,
                  initial_investment_value: 400,
                  estimated_time_to_profit: 10,
-                 user: user)
+                 user: user, category: category_technology)
 
     Idea.create!(title: 'Suportenovo',
                  description: 'A melhor invenção',
                  estimated_project_time: 2,
                  initial_investment_value: 400,
                  estimated_time_to_profit: 10,
-                 user: user)
+                 user: user, category: category_new_support)
 
     Idea.create!(title: 'Ideia de aranha',
                  description: 'Invenção de aranha',
                  estimated_project_time: 4,
                  initial_investment_value: 500,
                  estimated_time_to_profit: 20,
-                 user: user_spider)
+                 user: user_spider, category: category_spider)
 
     visit root_path
     click_on 'Logar'
@@ -40,6 +43,7 @@ feature 'idealizer see his own ideias' do
 
     expect(page).to have_css('h5', text: 'Suporte de geladeira')
     expect(page).to have_css('p', text: 'A melhor invenção')
+    expect(page).to have_content('Tecnologia')
     expect(page).to have_css('li', text: '2 meses')
     expect(page).to have_css('li', text: 'R$ 400,00')
     expect(page).to have_css('li', text: '10 meses')
@@ -47,6 +51,7 @@ feature 'idealizer see his own ideias' do
 
     expect(page).to have_css('h5', text: 'Suportenovo')
     expect(page).to have_css('p', text: 'A melhor invenção')
+    expect(page).to have_css('p', text: 'Saúde')
     expect(page).to have_css('li', text: '2 meses')
     expect(page).to have_css('li', text: 'R$ 400,00')
     expect(page).to have_css('li', text: '10 meses')
@@ -54,6 +59,7 @@ feature 'idealizer see his own ideias' do
 
     expect(page).not_to have_css('h5', text: 'Ideia de aranha')
     expect(page).not_to have_css('p', text: 'Invenção de aranha')
+    expect(page).not_to have_css('p', text: 'Aranha')
     expect(page).not_to have_css('li', text: '4 meses')
     expect(page).not_to have_css('li', text: 'R$ 500,00')
     expect(page).not_to have_css('li', text: '20 meses')
