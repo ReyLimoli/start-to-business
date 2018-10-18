@@ -16,20 +16,18 @@
         <% end %>
       </li>
 
-
-      <li class="navbar-brand">
-        <% if user_signed_in? %>
+      <% if user_signed_in? %>
+        <li class="navbar-brand">
           <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'index') %>" href="<%= ideas_path %>">Minhas ideias</a>
-        <% end %>
-      </li>
-
-      <li class="navbar-brand">
-        <% if user_signed_in? %>
+        </li>
+        <li class="navbar-brand">
           <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'new') %>" href="<%= new_idea_path %>">Tenho uma Ideia</a>
-        <% end %>
-      </li>
-    </ul>
-
+        </li>
+        <li class="navbar-brand">
+          <%= link_to 'Favoritas', favorite_ideas_path %>
+        </li>
+      <% end %>
+    </ul>      
     <ul class="nav navbar-nav justify-content-end">
       <li class="navbar-brand">
         <% unless user_signed_in? %>
