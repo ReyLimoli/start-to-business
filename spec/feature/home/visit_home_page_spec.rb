@@ -34,4 +34,10 @@ dispostos a firmar parceria.")
     visit new_idea_path
     expect(current_path).to eq root_path
   end
+
+  scenario 'show footer' do
+    visit root_path
+    expect(page).to have_content('Voltar ao topo')
+    expect(page).to have_content('Politica de privacidade')
+  end
 end
