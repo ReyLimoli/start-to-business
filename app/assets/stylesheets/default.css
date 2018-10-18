@@ -1,10 +1,11 @@
-.hide{
-    display: none;
-}
-
 html {
     height: 100%;
     margin: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
 }
 
 .bg {
@@ -19,3 +20,8 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.stb-main{
+  flex: 1 0 auto;
+}
+
