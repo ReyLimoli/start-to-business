@@ -1,29 +1,117 @@
-<div class="mt-4 mb-4">
-<div class="margin jumbotron jumbotron-fluid">
-  <div class='container'>
-    <div class="row">
-      <div class="col-sm-8">
-        <h1 class="display-4">Bem-vindo ao S2Business</h1>
-        <p class="lead">Onde você pode investir em uma ideia e criar a sua!</p>
+<div>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="
+  padding-left: 40px;
+  padding-right: 40px;">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag('slide1.png', style:"width:100%;") %> 
+        <div class="container">
+          <div class="carousel-caption d-none d-md-block text-center opac">
+            <h1>Start to Business.</h1>
+            <p>Encontre investidores dispostos a firmar parceria.</p>
+            <p><%= link_to 'Detalhes', home_about_us_path, class:'btn btn-lg btn-primary', role:'button' %></p>
+          </div>
+        </div>
+
       </div>
+      <div class="carousel-item">
+        <%= image_tag('slide4.png', style:"width:100%;") %> 
+        <div class="container">
+          <div class="carousel-caption d-none d-md-block text-lecenterft opac">
+            <h1>Está afim de investir?</h1>
+            <p>Este site te ajudará a encontrar a ideia adequatada para você lucrar muito!</p>
+            <p><%= link_to 'Seja um investidor', new_user_registration_path, class:'btn btn-lg btn-primary', role:'button' %></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag('slide3.jpg', style:"width:100%;") %> 
+        <div class="container">
+          <div class="carousel-caption d-none d-md-block text-center opac">
+            <h1>Possui uma ideia?</h1>
+            <p>Interaja com investidores, envie suas ideis e muito mais!</p>
+            <p><p><%= link_to 'Seja um investidor', new_user_registration_path, class:'btn btn-lg btn-primary', role:'button' %></p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="mx-auto" style="width: 300px;">
+      <h2>Casos de sucesso</h2>
     </div>
   </div>
 </div>
-</div>
 
-<div class="bg mt-0">
-</div>
 
-<% if user_signed_in? %>
-  <% @ideas.each do |idea|%>
-  <div id="idea-<%=idea.id%>">
-    <h1><%= idea.title %></h1>
-    <p><%= truncate(idea.description, length: 25) { link_to 'Ver detalhes', idea } %></p>
-    <p><%= idea.category.name %></p>
-    <p><%= number_to_currency(idea.initial_investment_value) %></p>
-    <p><%= t('months', count: idea.estimated_project_time) %></p>
-    <p><%= t('months', count: idea.estimated_time_to_profit) %></p>
+
+<div class="container marketing">
+  <hr class="featurette-divider">
+
+  <div class="row">
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+      <h2>Fulano </h2>
+      <p>Bla bla bla bla bla bla bla bla</p>
+      <!--<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>-->
+    </div>
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+      <h2>Fulano 2</h2>
+      <p>Bla bla bla bla bla bla bla bla</p>
+      <!--<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>-->
+    </div>
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+      <h2>Fulano 3</h2>
+      <p>Bla bla bla bla bla bla bla bla</p>
+      <!--<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>-->
+    </div>
   </div>
-  <% end%>
-<% end %>
+
+  <hr class="featurette-divider">
+</div>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <% if user_signed_in? %>
+      <% @ideas.each do |idea|%>
+        <div id="idea-<%=idea.id%>">
+          <div class="col6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= idea.title %></h5>
+                <p class="card-text"><%= truncate(idea.description, length: 25) { link_to 'Ver detalhes', idea } %></p>
+                <p class="card-text"><%= idea.category.name %></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Valor inicial do investimento: </strong> <%= number_to_currency(idea.initial_investment_value) %></li>
+                <li class="list-group-item"><strong>Tempo estimado do projeto: </strong><%= t('months', count: idea.estimated_project_time) %></li>
+                <li class="list-group-item"><strong>Tempo estimado para retorno: </strong><%= t('months', count: idea.estimated_time_to_profit) %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end%>
+    <% end %>
+  </div>
+</div>
 

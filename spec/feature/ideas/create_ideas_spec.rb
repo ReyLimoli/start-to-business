@@ -56,7 +56,7 @@ institucional no qual pudesse avaliar professores")
     fill_in 'Tempo estimado para retorno', with: ''
     click_on 'Enviar Ideia'
 
-    expect(page).to have_css('h1', text: 'Tenho uma ideia')
+    expect(page).to have_css('h2', text: 'Tenho uma ideia')
     expect(page).to have_content('Título')
     expect(page).to have_content('Descrição')
     expect(page).to have_content('Tempo estimado de projeto')

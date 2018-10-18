@@ -9,6 +9,7 @@ AllCops:
   TargetRubyVersion: 2.5
   Exclude:
   - 'bin/**/*'
+  - 'Rakefile'
   - 'vendor/**/*'
   - 'db/**/*'
   - 'config/**/*'
