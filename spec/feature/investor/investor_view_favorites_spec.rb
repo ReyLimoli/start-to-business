@@ -123,4 +123,9 @@ feature 'investor view favorites ideas' do
     expect(page).not_to have_content('Nova forma de utilizar a lampada')
     expect(page).not_to have_link('Ver detalhes', href: idea_path(idea2))
   end
+
+  scenario 'investor is not loged in and visit favorite route' do
+    visit favorite_ideas_path
+    expect new_user_session_path
+  end
 end
