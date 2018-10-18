@@ -7,6 +7,11 @@ body, html {
     margin: 0;
 }
 
+body{
+  display: flex;
+  flex-direction: column;
+}
+
 .bg {
     /* The image used */
     background-image: url("investor_img.jpg");
@@ -19,3 +24,8 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.stb-main{
+  flex: 1 0 auto;
+}
+

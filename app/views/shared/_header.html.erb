@@ -7,10 +7,6 @@
       </li>
 
       <li class="navbar-brand">
-        <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'about_us') %>" href="<%= home_about_us_path %>">Sobre</a>
-      </li>
-
-      <li class="navbar-brand">
         <% unless user_signed_in? %>
           <a class="nav-link <%= 'active' if(params[:controller] == 'devise/registrations' && params[:action] == 'new') %>" href="<%= new_user_registration_path %>">Cadastre-se</a>
         <% end %>
@@ -18,15 +14,19 @@
 
 
       <li class="navbar-brand">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && !current_user.investor? %>
           <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'index') %>" href="<%= ideas_path %>">Minhas ideias</a>
         <% end %>
       </li>
 
       <li class="navbar-brand">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && !current_user.investor? %>
           <a class="nav-link <%= 'active' if(params[:controller] == 'ideas' && params[:action] == 'new') %>" href="<%= new_idea_path %>">Tenho uma Ideia</a>
         <% end %>
+      </li>
+
+      <li class="navbar-brand">
+        <a class="nav-link <%= 'active' if(params[:controller] == 'home' && params[:action] == 'about_us') %>" href="<%= home_about_us_path %>">Sobre</a>
       </li>
     </ul>
 

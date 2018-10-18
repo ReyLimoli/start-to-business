@@ -1,10 +1,18 @@
 class IdeasController < ApplicationController
   def index
-    @ideas = Idea.where(user_id: current_user.id)
+    if !current_user || current_user.investor?
+      redirect_to root_path
+    else
+      @ideas = Idea.where(user_id: current_user.id)
+    end
   end
 
   def new
-    @idea = Idea.new
+    if !current_user || current_user.investor?
+      redirect_to root_path
+    else
+      @idea = Idea.new
+    end
   end
 
   def create
@@ -13,7 +21,7 @@ class IdeasController < ApplicationController
     @idea.user = current_user
 
     if @idea.save
-      flash[:success] = 'Sua ideia foi criada com sucesso!'
+      flash[:notice] = 'Sua ideia foi criada com sucesso!'
       redirect_to @idea
     else
       flash[:alert] = 'Preencha todos os campos!'

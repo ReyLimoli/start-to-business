@@ -17,4 +17,8 @@ class User < ApplicationRecord
 
     errors[:amount_available_to_invest] << 'não pode ficar em branco'
   end
+
+  def investor?
+    amount_available_to_invest
+  end
 end
