@@ -5,6 +5,7 @@ feature 'create_ideas' do
     user = User.create!(name: 'Aparecida', email: 'user@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: '2016-05-10')
+    Category.create(name: 'Educação/Tecnologia')
 
     visit root_path
     click_on 'Logar'
@@ -14,6 +15,7 @@ feature 'create_ideas' do
 
     click_on 'Tenho uma Ideia'
 
+    select 'Educação/Tecnologia', from: 'Categoria'
     fill_in 'Título', with: 'Avaliação Institucional'
     fill_in 'Descrição', with: "Eu como aluno gostaria de ter um sistema \
 institucional no qual pudesse avaliar professores"
@@ -23,6 +25,7 @@ institucional no qual pudesse avaliar professores"
     click_on 'Enviar Ideia'
 
     expect(page).to have_content('Avaliação Institucional')
+    expect(page).to have_content('Educação/Tecnologia')
     expect(page).to have_content("Eu como aluno gostaria de ter um sistema \
 institucional no qual pudesse avaliar professores")
     expect(page).to have_css('p', text: '18 meses')
@@ -46,6 +49,7 @@ institucional no qual pudesse avaliar professores")
 
     click_on 'Tenho uma Ideia'
     fill_in 'Título', with: ''
+    select '', from: 'Categoria'
     fill_in 'Descrição', with: ''
     fill_in 'Tempo estimado de projeto', with: ''
     fill_in 'Valor inicial do investimento', with: ''

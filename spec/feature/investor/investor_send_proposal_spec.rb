@@ -9,11 +9,13 @@ feature 'investor send proposal' do
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: '2016-05-10')
+    category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
     InvestmentType.create!(name: 'Comprar ideia')
 
     visit root_path
@@ -52,11 +54,14 @@ Proposta TOP")
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: '2016-05-10')
+
+    category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
     InvestmentType.create!(name: 'Comprar ideia')
 
     visit root_path
@@ -87,11 +92,13 @@ Proposta TOP")
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: '2016-05-10')
+    category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
     InvestmentType.create!(name: 'Comprar ideia')
 
     visit root_path

@@ -6,16 +6,21 @@ feature 'investor view favorites ideas' do
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: '2016-05-10',
                         amount_available_to_invest: '600')
+
+    category_technology = Category.create(name: 'Tecnologia')
+
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
     idea2 = create(:idea, title: 'Invenção da Lampada',
                           description: 'Nova forma de utilizar a lampada',
                           estimated_project_time: 4,
                           initial_investment_value: 10_000.00,
-                          estimated_time_to_profit: 24, user: user)
+                          estimated_time_to_profit: 24, user: user,
+                          category: category_technology)
 
     investor = User.create(name: 'Batata', email: 'investor@user.com',
                            password: '123456', document: 123_456,
@@ -47,16 +52,21 @@ feature 'investor view favorites ideas' do
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: '2016-05-10',
                         amount_available_to_invest: '600')
+
+    category_technology = Category.create(name: 'Tecnologia')
+
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
     idea2 = create(:idea, title: 'Invenção da Lampada',
                           description: 'Nova forma de utilizar a lampada',
                           estimated_project_time: 4,
                           initial_investment_value: 10_000.00,
-                          estimated_time_to_profit: 24, user: user)
+                          estimated_time_to_profit: 24, user: user,
+                          category: category_technology)
 
     investor = User.create(name: 'Batata', email: 'investor@user.com',
                            password: '123456', document: 123_456,
@@ -87,16 +97,21 @@ feature 'investor view favorites ideas' do
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: '2016-05-10',
                         amount_available_to_invest: '600')
+
+    category_technology = Category.create(name: 'Tecnologia')
+
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
     idea2 = create(:idea, title: 'Invenção da Lampada',
                           description: 'Nova forma de utilizar a lampada',
                           estimated_project_time: 4,
                           initial_investment_value: 10_000.00,
-                          estimated_time_to_profit: 24, user: user)
+                          estimated_time_to_profit: 24, user: user,
+                          category: category_technology)
 
     investor = User.create(name: 'Batata', email: 'investor@user.com',
                            password: '123456', document: 123_456,
