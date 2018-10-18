@@ -12,7 +12,6 @@ class IdeasController < ApplicationController
       redirect_to root_path
     else
       @idea = Idea.new
-      @categories = Category.all
     end
   end
 

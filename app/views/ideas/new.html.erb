@@ -10,7 +10,7 @@
   <%= simple_form_for @idea do |f| %>
     <%= f.input :title, label: 'Título' %>
     <%= f.input :description, label: 'Descrição',as: :text %>
-    <%= f.input :category_id, label: 'Categoria', collection: @categories %>
+    <%= f.association :category, label: 'Categoria' %>
     <%= f.input :estimated_project_time, label: 'Tempo estimado de projeto' %>
     <%= f.input :initial_investment_value, label: 'Valor inicial do investimento' %>
     <%= f.input :estimated_time_to_profit, label: 'Tempo estimado para retorno' %>
