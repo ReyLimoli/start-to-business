@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   resources :invites, only: [:new, :create, :show]
 
+  resources :favorite_ideas, only: [:index]
 end
