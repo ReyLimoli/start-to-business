@@ -15,7 +15,7 @@ pt-BR:
       idea:
         title: Título
         description: Descrição
-        estimated_project_time: Tempo estimado
+        estimated_project_time: Tempo estimado de projeto
         estimated_time_to_profit: Tempo estimado para retorno
         initial_investment_value: Valor inicial do investimento
   months:
