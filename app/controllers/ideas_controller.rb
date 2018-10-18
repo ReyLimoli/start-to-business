@@ -43,7 +43,8 @@ class IdeasController < ApplicationController
 
   def unfavorite
     @idea = Idea.find(params[:id])
-    @favorite_idea = @idea.favorite_ideas.find_by(user: current_user)
+    @favorite_idea = @idea.favorite_ideas.find_by(user: current_user,
+                                                  active: true)
     @favorite_idea.active = false
     @favorite_idea.save
     redirect_to idea_path(@idea)

@@ -1,0 +1,39 @@
+body {
+  padding-bottom: 100px;
+  position: relative;
+  min-height: 100vh;
+}
+
+.hide{
+    display: none;
+}
+
+.form-block {
+  clear: both;
+  margin-top: .5em;
+}
+
+.carousel-item {
+  height: 32rem;
+  background-color: #777;
+}
+
+.carousel {
+  margin-bottom: 4rem;
+}
+
+.navbar-nav .nav-link {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.opac {
+  color: white;
+  top: 150px;
+  background: rgba(0, 0, 0, 0.5);
+  width: 640px;
+  height: 240px;
+  padding-left: 80px;
+  padding-right: 65px;
+}
+

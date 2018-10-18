@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   resources :investors, only: [:index, :show]
-
+  resources :favorite_ideas, only: [:index]
 end

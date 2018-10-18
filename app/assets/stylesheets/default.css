@@ -1,8 +1,4 @@
-.hide{
-    display: none;
-}
-
-body, html {
+html {
     height: 100%;
     margin: 0;
 }
@@ -17,7 +13,7 @@ body{
     background-image: url("investor_img.jpg");
 
     /* Full height */
-    height: 50%; 
+    height: 50%;
 
     /* Center and scale the image nicely */
     background-position: center;
