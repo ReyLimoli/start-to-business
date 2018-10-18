@@ -27,23 +27,27 @@
             <%= link_to 'Favoritas', favorite_ideas_path, class: "nav-link #{active? favorite_ideas_path}" %>
           </li>
         <% end %>
-        <li class="navbar-item">
-          <%= link_to('Logout', destroy_user_session_path, method:'delete', class: 'nav-link') if user_signed_in?%>
-        </li>
         <ul class="nav navbar-nav justify-content-end">
           <li class="nav-item">
             <%= link_to 'Encontre um investidor', investors_path, class: "nav-link #{active? investors_path}" %>
           </li>
         </ul>
+      <% end %>
+    </ul>
+  </div>
+  <div id="navbarSupportedContent">
+    <ul class="nav navbar-nav justify-content-end">
+      <% if user_signed_in? %> 
+        <li class="navbar-item">
+          <%= link_to('Logout', destroy_user_session_path, method:'delete', class: 'nav-link') if user_signed_in?%>
+        </li>
       <% else %>
         <li class="navbar-item">
           <%= link_to 'Cadastre-se', new_user_registration_path, class: "nav-link #{active? new_user_registration_path}" %>
         </li>
-        <ul class="nav navbar-nav justify-content-end">
-          <li class="nav-item">
-            <%= link_to 'Logar', user_session_path, class: "nav-link #{active? user_session_path}" %>
-          </li>
-        </ul>
+        <li class="nav-item">
+          <%= link_to 'Logar', user_session_path, class: "nav-link #{active? user_session_path}" %>
+        </li>
       <% end %>
     </ul>
   </div>
