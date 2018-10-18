@@ -1,19 +1,26 @@
 class IdeasController < ApplicationController
   def index
-    @ideas = Idea.where(user_id: current_user.id)
+    if !current_user || current_user.investor?
+      redirect_to root_path
+    else
+      @ideas = Idea.where(user_id: current_user.id)
+    end
   end
 
   def new
-    @idea = Idea.new
+    if !current_user || current_user.investor?
+      redirect_to root_path
+    else
+      @idea = Idea.new
+    end
   end
 
   def create
     @idea = Idea.new(idea_params)
-
     @idea.user = current_user
 
     if @idea.save
-      flash[:success] = 'Sua ideia foi criada com sucesso!'
+      flash[:notice] = 'Sua ideia foi criada com sucesso!'
       redirect_to @idea
     else
       flash[:alert] = 'Preencha todos os campos!'
@@ -35,7 +42,8 @@ class IdeasController < ApplicationController
 
   def unfavorite
     @idea = Idea.find(params[:id])
-    @favorite_idea = @idea.favorite_ideas.find_by(user: current_user)
+    @favorite_idea = @idea.favorite_ideas.find_by(user: current_user,
+                                                  active: true)
     @favorite_idea.active = false
     @favorite_idea.save
     redirect_to idea_path(@idea)
@@ -46,6 +54,7 @@ class IdeasController < ApplicationController
   def idea_params
     params.require(:idea).permit(:title, :description, :estimated_project_time,
                                  :initial_investment_value,
-                                 :estimated_time_to_profit)
+                                 :estimated_time_to_profit,
+                                 :category_id)
   end
 end

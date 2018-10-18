@@ -1,0 +1,21 @@
+.radio-buttons {
+  margin: .5em 0;
+  span input {
+    float: left;
+    margin-right: 0.4em;
+    margin-top: 0.4em;
+  }
+
+  label.string {
+    margin-bottom: .5em !important;
+  }
+
+  span {
+    clear: both;
+    display:block;
+  }
+  clear: both;
+}
+
+
+

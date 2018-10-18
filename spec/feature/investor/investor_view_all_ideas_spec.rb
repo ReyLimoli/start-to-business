@@ -9,16 +9,20 @@ feature 'Investor_view_all_ideas' do
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+    category_technology = Category.create(name: 'Tecnologia')
+
     create(:idea, title: 'Invenção da roda',
                   description: 'Nova forma de utilizar a roda',
                   estimated_project_time: 3,
                   initial_investment_value: 10_000.00,
-                  estimated_time_to_profit: 24, user: user)
+                  estimated_time_to_profit: 24, user: user,
+                  category: category_technology)
     create(:idea, title: 'Invenção da Lampada',
                   description: 'Ilumine o mundo ao seu redor',
                   estimated_project_time: 4,
                   initial_investment_value: 3000.00,
-                  estimated_time_to_profit: 12, user: user)
+                  estimated_time_to_profit: 12, user: user,
+                  category: category_technology)
 
     visit root_path
 
@@ -29,9 +33,11 @@ feature 'Investor_view_all_ideas' do
 
     expect(page).to have_css('h5', text: 'Invenção da roda')
     expect(page).to have_css('p', text: 'Nova forma de utilizar...')
+    expect(page).to have_css('p', text: 'Tecnologia')
 
     expect(page).to have_css('h5', text: 'Invenção da Lampada')
     expect(page).to have_css('p', text: 'Ilumine o mundo ao seu...')
+    expect(page).to have_css('p', text: 'Tecnologia')
   end
 
   scenario 'Investor view idea details' do
@@ -42,11 +48,13 @@ feature 'Investor_view_all_ideas' do
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+    category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user)
+                         estimated_time_to_profit: 24, user: user,
+                         category: category_technology)
 
     visit root_path
 
@@ -62,6 +70,7 @@ feature 'Investor_view_all_ideas' do
     expect(current_path).to eq idea_path(idea.id)
     expect(page).to have_css('h1', text: 'Invenção da roda')
     expect(page).to have_css('p', text: 'Nova forma de utilizar a roda')
+    expect(page).to have_css('p', text: 'Tecnologia')
     expect(page).to have_css('li', text: '3 meses')
     expect(page).to have_css('li', text: 'R$ 10.000,00')
     expect(page).to have_css('li', text: '24 meses')
@@ -71,14 +80,53 @@ feature 'Investor_view_all_ideas' do
     user = User.create!(name: 'Aparecida', email: 'user2@user.com',
                         password: '123456', document: 123_456,
                         linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+    category_technology = Category.create(name: 'Tecnologia')
     create(:idea, title: 'Invenção da roda',
                   description: 'Nova forma de utilizar a roda',
                   estimated_project_time: 3,
                   initial_investment_value: 10_000.00,
-                  estimated_time_to_profit: 24, user: user)
+                  estimated_time_to_profit: 24, user: user,
+                  category: category_technology)
 
     visit root_path
 
     expect(page).not_to have_css('h1', text: 'Invenção da roda')
+  end
+
+  scenario 'view favorited ideas' do
+    investor = User.create!(name: 'Aparecida', email: 'user123456@user.com',
+                            password: '123456', document: 123_456,
+                            linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016,
+                            amount_available_to_invest: '600')
+    user = User.create!(name: 'Aparecida', email: 'user2@user.com',
+                        password: '123456', document: 123_456,
+                        linkedin: 'linkedin', birth_day: 10 / 0o5 / 2016)
+    category_technology = Category.create(name: 'Tecnologia')
+
+    create(:idea, title: 'Invenção da roda',
+                  description: 'Nova forma de utilizar a roda',
+                  estimated_project_time: 3,
+                  initial_investment_value: 10_000.00,
+                  estimated_time_to_profit: 24, user: user,
+                  category: category_technology)
+    create(:idea, title: 'Invenção da Lampada',
+                  description: 'Ilumine o mundo ao seu redor',
+                  estimated_project_time: 4,
+                  initial_investment_value: 3000.00,
+                  estimated_time_to_profit: 12, user: user,
+                  category: category_technology)
+
+    visit root_path
+
+    click_on 'Logar'
+    fill_in 'Email', with: investor.email
+    fill_in 'Senha', with: investor.password
+    click_on 'Entrar'
+
+    expect(page).to have_css('h5', text: 'Invenção da roda')
+    expect(page).to have_css('p', text: 'Nova forma de utilizar...')
+
+    expect(page).to have_css('h5', text: 'Invenção da Lampada')
+    expect(page).to have_css('p', text: 'Ilumine o mundo ao seu...')
   end
 end
