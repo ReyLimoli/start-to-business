@@ -138,4 +138,38 @@ feature 'investor view favorites ideas' do
     expect(page).not_to have_content('Nova forma de utilizar a lampada')
     expect(page).not_to have_link('Ver detalhes', href: idea_path(idea2))
   end
+
+  scenario 'visitor is not loged in and visit favorite route' do
+    visit favorite_ideas_path
+    expect new_user_session_path
+  end
+
+  scenario 'user loged in and visit favorite route' do
+    user = User.create!(name: 'Aparecida', email: 'user1234@user.com',
+                        password: '123456', document: 123_456,
+                        linkedin: 'linkedin', birth_day: '2016-05-10')
+    visit root_path
+
+    click_on 'Logar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
+
+    expect(page).not_to have_link('Favoritas', href: favorite_ideas_path)
+  end
+
+  scenario 'user loged in and visit favorite route' do
+    user = User.create!(name: 'Aparecida', email: 'user1234@user.com',
+                        password: '123456', document: 123_456,
+                        linkedin: 'linkedin', birth_day: '2016-05-10')
+    visit root_path
+
+    click_on 'Logar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
+
+    visit favorite_ideas_path
+    expect root_path
+  end
 end
