@@ -12,6 +12,7 @@ class ProposalsController < ApplicationController
       .permit(:investment_type_id, :doubts, :details))
     @proposal.user = current_user
     if @proposal.save
+      ProposalMailer.notify_idealizer(@idea.id, @proposal.id)
       redirect_to @idea
     else
       render 'new'

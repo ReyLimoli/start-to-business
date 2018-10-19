@@ -11,11 +11,11 @@ feature 'investor send proposal' do
                         linkedin: 'linkedin', birth_day: '2016-05-10')
     category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
-                         description: 'Nova forma de utilizar a roda',
-                         estimated_project_time: 3,
-                         initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user,
-                         category: category_technology)
+                  description: 'Nova forma de utilizar a roda',
+                  estimated_project_time: 3,
+                  initial_investment_value: 10_000.00,
+                  estimated_time_to_profit: 24, user: user,
+                  category: category_technology)
     InvestmentType.create!(name: 'Comprar ideia')
 
     visit root_path
@@ -46,6 +46,7 @@ Comprar ideia")
     expect(page).to have_css('li', text: "Fale mais sobre sua proposta: \
 Proposta TOP")
   end
+
   scenario 'and must fill_in investment_type' do
     investor = User.create!(name: 'Aparecida', email: 'user1234@user.com',
                             password: '123456', document: 123_456,
@@ -57,11 +58,11 @@ Proposta TOP")
 
     category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
-                         description: 'Nova forma de utilizar a roda',
-                         estimated_project_time: 3,
-                         initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user,
-                         category: category_technology)
+                  description: 'Nova forma de utilizar a roda',
+                  estimated_project_time: 3,
+                  initial_investment_value: 10_000.00,
+                  estimated_time_to_profit: 24, user: user,
+                  category: category_technology)
     InvestmentType.create!(name: 'Comprar ideia')
 
     visit root_path
@@ -94,11 +95,11 @@ Proposta TOP")
                         linkedin: 'linkedin', birth_day: '2016-05-10')
     category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
-                         description: 'Nova forma de utilizar a roda',
-                         estimated_project_time: 3,
-                         initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user,
-                         category: category_technology)
+                  description: 'Nova forma de utilizar a roda',
+                  estimated_project_time: 3,
+                  initial_investment_value: 10_000.00,
+                  estimated_time_to_profit: 24, user: user,
+                  category: category_technology)
     InvestmentType.create!(name: 'Comprar ideia')
 
     visit root_path
@@ -113,5 +114,30 @@ Proposta TOP")
     end
 
     expect(page).not_to have_content('Deseja investir nessa ideia?')
+  end
+
+  scenario 'and should notify the idealizer' do
+    investor = create(:user, :investor, name: 'Aparecida', email: 'investor@user.com')
+    user = create(:user, name: 'Aparecida', email: 'user2@user.com')
+    idea = create(:idea, title: 'Invenção da roda', user: user)
+    create(:investment_type, name: 'Comprar ideia')
+    mailer_spy = instance_spy(ProposalMailer)
+    stub_const('ProposalMailer', mailer_spy)
+
+    login_as(investor, scope: :user)
+    visit root_path
+    within "#idea-#{idea.id}" do
+      click_on 'Ver detalhes'
+    end
+
+    click_on 'Deseja investir nessa ideia?'
+    select 'Comprar ideia'
+    fill_in 'Dúvidas', with: 'Eu não entendi essa ideia'
+    fill_in 'Fale mais sobre sua proposta', with: 'Proposta TOP'
+    click_on 'Enviar'
+
+    proposal = Proposal.last
+
+    expect(mailer_spy).to have_received(:notify_idealizer).with(idea.id, proposal.id)
   end
 end
