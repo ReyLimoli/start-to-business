@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="mt-5 mb-4">
-      <h2 class="mb-4">Minhas propostas</h2>
+      <h2 class="mb-4">Propostas</h2>
     </div>
   </div>
 </div>
@@ -12,7 +12,7 @@
     </div>
 <% end %>
 
-<div class="container-fluid">
+<div class="container">
   <div class="row justify-content-center">
     <% @proposals.each do |proposal| %>
       <div class="col-sm-4">
@@ -25,6 +25,7 @@
             <li class="list-group-item"><strong>Tipo de investimento: </strong><%= proposal.investment_type.name %> </li>
             <li class="list-group-item"><strong>Dúvidas: </strong> <%= proposal.doubts %> </li>
             <li class="list-group-item"><strong>Fale mais sobre sua proposta: </strong><%= proposal.details %> </li>
+            <li class="list-group-item"><strong>Investidor: </strong><%= proposal.user.name %></li>
           </ul>
         </div>
       </div>
