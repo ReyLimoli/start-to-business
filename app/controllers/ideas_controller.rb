@@ -1,8 +1,7 @@
 class IdeasController < ApplicationController
-  before_action :check_investor, only: [:index, :new]
-  def index
-    @ideas = current_user.ideas
-  end
+  before_action :authenticate_user!
+  before_action :check_investor, only: [:index, :show]
+  def index; end
 
   def new
     @idea = Idea.new
@@ -52,8 +51,10 @@ class IdeasController < ApplicationController
   end
 
   def check_investor
-    if !current_user || current_user.investor?
-      redirect_to root_path
+    if user_signed_in? && current_user.investor?
+      @ideas = Idea.all
+    elsif user_signed_in? && current_user.idealizer?
+      @ideas = current_user.ideas
     end
   end
 end
