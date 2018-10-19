@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
-  before_action :check_investor, only: [:index, :new]
+  before_action :check_investor, only: %i[index new]
+
   def index
     @ideas = current_user.ideas
   end
@@ -52,8 +53,6 @@ class IdeasController < ApplicationController
   end
 
   def check_investor
-    if !current_user || current_user.investor?
-      redirect_to root_path
-    end
+    redirect_to root_path if !current_user || current_user.investor?
   end
 end
