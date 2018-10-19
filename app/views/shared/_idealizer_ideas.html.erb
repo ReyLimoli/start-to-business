@@ -1,0 +1,34 @@
+
+<% if @ideas.empty? %>
+    <div class="alert alert-warning" role="alert">
+        Não há ideias cadastradas
+    </div>
+<% end %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <% @ideas.each do |idea| %>
+    <div id="idea-<%=idea.id%>">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= idea.title %></h5>
+            <p><%if idea.favorite?(current_user)%>
+              <%= image_tag 'favorite_heart', size: "32x32" %>
+            <% end %></p>
+            <p class="card-text"><%= idea.description %></p>
+            <p class="card-text"><%= idea.category.name %></p>
+            <p><%= link_to('Ver detalhes', idea) %> </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Tempo estimado: </strong><%= t('months', count: idea.estimated_project_time) %> </li>
+            <li class="list-group-item"><strong>Valor inicial do investimento: </strong> <%= number_to_currency(idea.initial_investment_value) %> </li>
+            <li class="list-group-item"><strong>Tempo estimado para retorno: </strong><%= t('months', count: idea.estimated_time_to_profit) %> </li>
+            <li class="list-group-item"><strong>Idealizador: </strong><%= idea.user.name %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

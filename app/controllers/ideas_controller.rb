@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_investor, only: [:index, :show]
+  before_action :check_investor, only: %i[index show]
   def index; end
 
   def new
