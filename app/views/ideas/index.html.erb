@@ -15,7 +15,8 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <% @ideas.each do |idea| %>
-      <div class="col-sm-4 mb-4">
+    <div id="idea-<%=idea.id%>">
+      <div class="col-sm-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title"><%= idea.title %></h5>
@@ -24,7 +25,7 @@
             <% end %></p>
             <p class="card-text"><%= idea.description %></p>
             <p class="card-text"><%= idea.category.name %></p>
-
+            <p><%= link_to('Ver detalhes', idea) %> </p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Tempo estimado: </strong><%= t('months', count: idea.estimated_project_time) %> </li>
@@ -37,6 +38,7 @@
           </div>
         </div>
       </div>
+    </div>
     <% end %>
   </div>
 </div>

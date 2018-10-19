@@ -24,6 +24,7 @@
           <li class="navbar-item">
             <%= link_to 'Indique um investidor', new_invite_path, class: "nav-link #{active? new_invite_path}" %>
           </li>
+<<<<<<< HEAD
           <% if current_user.investor? %>
             <li class="navbar-item">
               <%= link_to 'Favoritas', favorite_ideas_path, class: "nav-link #{active? favorite_ideas_path}" %>
@@ -34,6 +35,11 @@
               <%= link_to 'Encontre um investidor', investors_path, class: "nav-link #{active? investors_path}" %>
             </li>
           </ul>
+=======
+          <li class="navbar-item">
+            <%= link_to 'Minhas propostas', proposals_path, class: "nav-link #{active? proposals_path}" %>
+          </li>
+>>>>>>> 909ec64e42e45a8cfd6f158852a8bcb9779766a4
         <% end %>
       </ul>
     </div>
