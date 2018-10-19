@@ -16,5 +16,6 @@ feature 'investor login' do
     expect(page).to have_content('Login efetuado com sucesso!')
     expect(page).not_to have_content('Logar')
     expect(page).to have_content('Logout')
+    expect(current_path).to eq ideas_path
   end
 end

@@ -1,18 +1,10 @@
 class IdeasController < ApplicationController
-  def index
-    if !current_user || current_user.investor?
-      redirect_to root_path
-    else
-      @ideas = Idea.where(user_id: current_user.id)
-    end
-  end
+  before_action :authenticate_user!
+  before_action :check_investor, only: %i[index show]
+  def index; end
 
   def new
-    if !current_user || current_user.investor?
-      redirect_to root_path
-    else
-      @idea = Idea.new
-    end
+    @idea = Idea.new
   end
 
   def create
@@ -56,5 +48,13 @@ class IdeasController < ApplicationController
                                  :initial_investment_value,
                                  :estimated_time_to_profit,
                                  :category_id)
+  end
+
+  def check_investor
+    if user_signed_in? && current_user.investor?
+      @ideas = Idea.all
+    elsif user_signed_in? && current_user.idealizer?
+      @ideas = current_user.ideas
+    end
   end
 end

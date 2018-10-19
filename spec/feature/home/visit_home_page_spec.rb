@@ -27,12 +27,12 @@ dispostos a firmar parceria.")
 
   scenario 'must be logged_in to see my ideas' do
     visit ideas_path
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_session_path
   end
 
   scenario 'must be logged_in to see new idea' do
     visit new_idea_path
-    expect(current_path).to eq root_path
+    expect(current_path).to eq user_session_path
   end
 
   scenario 'show footer' do

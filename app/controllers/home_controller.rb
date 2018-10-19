@@ -2,10 +2,8 @@ class HomeController < ApplicationController
   def about_us; end
 
   def index
-    if user_signed_in? && !current_user.amount_available_to_invest.nil?
-      @ideas = Idea.all
-    elsif user_signed_in?
-      @ideas = current_user.ideas
-    end
+    return unless user_signed_in?
+
+    redirect_to ideas_path
   end
 end
