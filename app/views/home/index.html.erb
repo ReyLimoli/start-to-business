@@ -1,50 +1,8 @@
-<%= render partial: 'carousel' %>
+<% unless user_signed_in? %>
+  <%= render partial: 'carousel' %>
+  <%= render partial: 'quotes' %>
+<% end %>
 
-<div class="row">
-  <div class="col-lg-12">
-    <div class="text-center">
-      <h2>O que dizem de nós</h2>
-    </div>
-  </div>
-</div>
-
-<div class="container marketing">
-  <hr class="featurette-divider">
-
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="text-center">
-        <%= image_tag 'people1.jpg', class: 'rounded-circle', width: '140', height: '140' %>
-        <blockquote>
-          Nunca foi tão fácil ter contato com tantas empresas
-          <cite>Fulano</cite>
-        </blockquote>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="text-center">
-        <%= image_tag 'people2.jpg', class: 'rounded-circle', width: '140', height: '140' %>
-        <blockquote>
-          Era difícil achar investimentos agora tudo ficou mais fácil
-          <cite>Sicrano</cite>
-        </blockquote>
-        <!--<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>-->
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="text-center">
-        <%= image_tag 'people3.jpg', class: 'rounded-circle', width: '140', height: '140' %>
-        <blockquote>
-          O Melhor lugar para achar empresas para investir
-          <cite>Beltrano</cite>
-        </blockquote>
-        <!--<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>-->
-      </div>
-    </div>
-  </div>
-
-  <hr class="featurette-divider">
-</div>
 
 <div class="container-fluid">
   <div class="row justify-content-center">
