@@ -1,0 +1,50 @@
+<div>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag('slide1.jpg', style:"width:100%;", class: 'carousel-image') %>
+        <div class="container">
+          <div class="carousel-caption d-none d-md-block text-center opac">
+            <h1>Start to Business.</h1>
+            <p>Encontre investidores dispostos a firmar parceria.</p>
+            <p><%= link_to 'Detalhes', home_about_us_path, class:'btn btn-lg btn-primary', role:'button' %></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="carousel-item">
+        <%= image_tag('slide2.jpg', style:"width:100%;") %>
+        <div class="container">
+          <div class="carousel-caption d-none d-md-block text-lecenterft opac">
+            <h1>Está afim de investir?</h1>
+            <p>Este site te ajudará a encontrar a ideia adequatada para você lucrar muito!</p>
+            <p><%= link_to 'Seja um investidor', new_user_registration_path, class:'btn btn-lg btn-primary', role:'button' %></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag('slide3.jpg', style:"width:100%;") %>
+        <div class="container">
+          <div class="carousel-caption d-none d-md-block text-center opac">
+            <h1>Possui uma ideia?</h1>
+            <p>Interaja com investidores, envie suas ideis e muito mais!</p>
+            <p><p><%= link_to 'Seja um idealizador', new_user_registration_path, class:'btn btn-lg btn-primary', role:'button' %></p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>

@@ -19,6 +19,10 @@ class ProposalsController < ApplicationController
   end
 
   def index
-    @proposals = current_user.proposals
+    if current_user.investor?
+      @proposals = current_user.proposals
+    elsif current_user.idealizer?
+      @proposals = Proposal.where(idea: current_user.ideas)
+    end
   end
 end

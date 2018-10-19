@@ -1,101 +1,15 @@
-<div>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="
-  padding-left: 40px;
-  padding-right: 40px;">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <%= image_tag('slide1.png', style:"width:100%;") %> 
-        <div class="container">
-          <div class="carousel-caption d-none d-md-block text-center opac">
-            <h1>Start to Business.</h1>
-            <p>Encontre investidores dispostos a firmar parceria.</p>
-            <p><%= link_to 'Detalhes', home_about_us_path, class:'btn btn-lg btn-primary', role:'button' %></p>
-          </div>
-        </div>
+<% unless user_signed_in? %>
+  <%= render partial: 'carousel' %>
+  <%= render partial: 'quotes' %>
+<% end %>
 
-      </div>
-      <div class="carousel-item">
-        <%= image_tag('slide4.png', style:"width:100%;") %> 
-        <div class="container">
-          <div class="carousel-caption d-none d-md-block text-lecenterft opac">
-            <h1>Está afim de investir?</h1>
-            <p>Este site te ajudará a encontrar a ideia adequatada para você lucrar muito!</p>
-            <p><%= link_to 'Seja um investidor', new_user_registration_path, class:'btn btn-lg btn-primary', role:'button' %></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag('slide3.jpg', style:"width:100%;") %> 
-        <div class="container">
-          <div class="carousel-caption d-none d-md-block text-center opac">
-            <h1>Possui uma ideia?</h1>
-            <p>Interaja com investidores, envie suas ideis e muito mais!</p>
-            <p><p><%= link_to 'Seja um investidor', new_user_registration_path, class:'btn btn-lg btn-primary', role:'button' %></p></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-
-
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <div class="mx-auto" style="width: 300px;">
-      <h2>Casos de sucesso</h2>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="container marketing">
-  <hr class="featurette-divider">
-
-  <div class="row">
-    <div class="col-lg-4">
-      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-      <h2>Fulano </h2>
-      <p>Bla bla bla bla bla bla bla bla</p>
-      <!--<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>-->
-    </div>
-    <div class="col-lg-4">
-      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-      <h2>Fulano 2</h2>
-      <p>Bla bla bla bla bla bla bla bla</p>
-      <!--<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>-->
-    </div>
-    <div class="col-lg-4">
-      <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-      <h2>Fulano 3</h2>
-      <p>Bla bla bla bla bla bla bla bla</p>
-      <!--<p><a class="btn btn-secondary" href="#" role="button">Ver detalhes »</a></p>-->
-    </div>
-  </div>
-
-  <hr class="featurette-divider">
-</div>
 
 <div class="container-fluid">
   <div class="row justify-content-center">
     <% if user_signed_in? %>
       <% @ideas.each do |idea|%>
         <div id="idea-<%=idea.id%>">
-          <div class="col6">
+          <div class="col6 ml-2 mr-2 mb-2">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><%= idea.title %></h5>
@@ -105,8 +19,8 @@
               <% end %></p>
                 <p class="card-text"><%= truncate(idea.description, length: 25)%></p>
                 <p class="card-text"><%= idea.category.name %></p>
-                <p><%= link_to('Ver detalhes', idea) %> </p>
-                
+                <p><%= link_to('Ver detalhes', idea, class: 'btn btn-primary') %> </p>
+
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><strong>Valor inicial do investimento: </strong> <%= number_to_currency(idea.initial_investment_value) %></li>
