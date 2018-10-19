@@ -4,6 +4,21 @@ body {
   min-height: 100vh;
 }
 
+.logo {
+  height: 45px;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(font-path('Roboto-Regular.ttf'));
+}
+
+nav {
+  font-size: 1.2rem;
+  background-color: white;
+  box-shadow: 0 1px 3px RGBA(0, 0, 0, 0.2);
+}
+
 .hide{
     display: none;
 }
@@ -30,10 +45,61 @@ body {
 .opac {
   color: white;
   top: 150px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   width: 640px;
   height: 240px;
   padding-left: 80px;
   padding-right: 65px;
 }
 
+.btn {
+  border-radius: 0px;
+}
+
+.btn-primary{
+  background-color: #464aff;
+}
+
+blockquote {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  margin: 0.25em 0;
+  padding: 0.35em 40px;
+  line-height: 1.45;
+  position: relative;
+  color: #383838;
+}
+
+blockquote:before {
+    display: block;
+    padding-left: 10px;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
+}
+
+blockquote cite {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+blockquote cite:before {
+    content: "\2014 \2009";
+}
+
+body {
+  margin-top: 100px;
+}
+
+.card-title {
+  a {
+    text-decoration: none;
+    color: black
+  }
+}
