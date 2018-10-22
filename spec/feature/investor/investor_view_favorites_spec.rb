@@ -22,12 +22,12 @@ feature 'investor view favorites ideas' do
                           estimated_time_to_profit: 24, user: user,
                           category: category_technology)
 
-    investor = User.create(name: 'Batata', email: 'investor@user.com',
-                           password: '123456', document: 123_456,
-                           linkedin: 'linkedin', birth_day: '2016-05-10',
-                           amount_available_to_invest: '500')
+    investor = User.create!(name: 'Batata', email: 'investor@user.com',
+                            password: '123456', document: 123_456,
+                            linkedin: 'linkedin', birth_day: '2016-05-10',
+                            amount_available_to_invest: '500')
 
-    FavoriteIdea.create(user: investor, idea: idea)
+    FavoriteIdea.create!(user: investor, idea: idea)
 
     visit root_path
 
@@ -39,7 +39,7 @@ feature 'investor view favorites ideas' do
 
     expect(page).to have_css('h1', text: 'Ideias Favoritas')
     expect(page).to have_content('Invenção da roda')
-    expect(page).to have_content('Nova forma de utilizar a roda')
+    expect(page).to have_content('Nova forma de utilizar...')
     expect(page).to have_link('Ver detalhes', href: idea_path(idea))
 
     expect(page).not_to have_content('Invenção da Lampada')

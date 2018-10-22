@@ -5,6 +5,7 @@ class Idea < ApplicationRecord
   belongs_to :category
 
   has_many :proposals, dependent: :nullify
+  has_many :investors, dependent: :nullify
 
   def proposal_from(user)
     proposals.find_by(user: user)
@@ -15,6 +16,4 @@ class Idea < ApplicationRecord
   def favorite?(user)
     favorite_ideas.where(user: user, active: true).any?
   end
-
-  has_many :investors, dependent: :nullify
 end

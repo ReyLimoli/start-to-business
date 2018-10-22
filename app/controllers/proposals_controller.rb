@@ -1,6 +1,12 @@
 class ProposalsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    return @proposals = current_user.proposals if current_user.investor?
+
+    @proposals = Proposal.where(idea: current_user.ideas)
+  end
+
   def new
     @idea = Idea.find(params[:idea_id])
     @proposal = Proposal.new

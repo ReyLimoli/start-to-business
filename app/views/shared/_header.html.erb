@@ -1,55 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= image_tag 'logo.png', class: 'logo' %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
-  <%= link_to 'S2Business', root_path, class: 'navbar-brand' %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="navbar-item">
-        <%= link_to 'Home', root_path, class: "nav-link #{active? root_path}" %>
-      </li>
-      <% if user_signed_in? %>
-        <% if current_user.idealizer? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <li class="navbar-item">
-          <%= link_to 'Tenho uma Ideia', new_idea_path, class: "nav-link #{active? new_idea_path}" %>
+          <%= link_to 'Home', root_path, class: "nav-link #{active? root_path}" %>
         </li>
-        <li class="navbar-item">
-          <%= link_to 'Minhas ideias', ideas_path, class: "nav-link #{active? ideas_path}" %>
-        </li>
-        <% end %>
-        <li class="navbar-item">
-          <%= link_to 'Indique um investidor', new_invite_path, class: "nav-link #{active? new_invite_path}" %>
-        </li>
-       <% if current_user.investor? %>
+        <% if user_signed_in? %>
+          <% if current_user.idealizer? %>
+            <li class="navbar-item">
+              <%= link_to 'Tenho uma Ideia', new_idea_path, class: "nav-link #{active? new_idea_path}" %>
+            </li>
+            <li class="navbar-item">
+              <%= link_to 'Minhas ideias', ideas_path, class: "nav-link #{active? ideas_path}" %>
+            </li>
+          <% end %>
           <li class="navbar-item">
-            <%= link_to 'Favoritas', favorite_ideas_path, class: "nav-link #{active? favorite_ideas_path}" %>
+            <%= link_to 'Indique um investidor', new_invite_path, class: "nav-link #{active? new_invite_path}" %>
+          </li>
+          <% if current_user.investor? %>
+            <li class="navbar-item">
+              <%= link_to 'Favoritas', favorite_ideas_path, class: "nav-link #{active? favorite_ideas_path}" %>
+            </li>
+          <% end %>
+          <ul class="nav navbar-nav justify-content-end">
+            <li class="nav-item">
+              <%= link_to 'Encontre um investidor', investors_path, class: "nav-link #{active? investors_path}" %>
+            </li>
+          </ul>
+          <li class="navbar-item">
+            <%= link_to 'Minhas propostas', proposals_path, class: "nav-link #{active? proposals_path}" %>
           </li>
         <% end %>
-        <ul class="nav navbar-nav justify-content-end">
-          <li class="nav-item">
-            <%= link_to 'Encontre um investidor', investors_path, class: "nav-link #{active? investors_path}" %>
+      </ul>
+    </div>
+    <div id="navbarSupportedContent">
+      <ul class="nav navbar-nav justify-content-end">
+        <% if user_signed_in? %>
+          <li class="navbar-item">
+            <%= link_to('Logout', destroy_user_session_path, method:'delete', class: 'nav-link') if user_signed_in?%>
           </li>
-        </ul>
-      <% end %>
-    </ul>
-  </div>
-  <div id="navbarSupportedContent">
-    <ul class="nav navbar-nav justify-content-end">
-      <% if user_signed_in? %> 
-        <li class="navbar-item">
-          <%= link_to('Logout', destroy_user_session_path, method:'delete', class: 'nav-link') if user_signed_in?%>
-        </li>
-      <% else %>
-        <li class="navbar-item">
-          <%= link_to 'Cadastre-se', new_user_registration_path, class: "nav-link #{active? new_user_registration_path}" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Logar', user_session_path, class: "nav-link #{active? user_session_path}" %>
-        </li>
-      <% end %>
-    </ul>
+        <% else %>
+          <li class="navbar-item">
+            <%= link_to 'Cadastre-se', new_user_registration_path, class: "nav-link #{active? new_user_registration_path}" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Logar', user_session_path, class: "nav-link #{active? user_session_path}" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
 

@@ -1,12 +1,35 @@
-<h1>Ideias Favoritas</h1>
+<div class="container">
+  <h1>Ideias Favoritas</h1>
 
-<% @fav_ideas.each do |fav| %>
-  <%= fav.idea.title %>
-  <%= fav.idea.description %>
-  <%= link_to  'Ver detalhes', idea_path(fav.idea)%>
-<% end %>
- <%if @fav_ideas.empty?%>
-    <div class="alert alert-warning" role="alert">
-        Você ainda não possui nenhuma ideia favorita
+  <div class="row">
+    <% @fav_ideas.each do |fav| %>
+      <div class="col-md-4">
+        <div id="idea-<%= fav.idea.id %>">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= fav.idea.title %></h5>
+
+            <p><%if fav.idea.favorite?(current_user)%>
+            <%= image_tag 'favorite_heart', size: "32x32" %>
+          <% end %></p>
+            <p class="card-text"><%= truncate(fav.idea.description, length: 25)%></p>
+            <p class="card-text"><%= fav.idea.category.name %></p>
+            <p><%= link_to('Ver detalhes', fav.idea, class: 'btn btn-primary') %> </p>
+
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Valor inicial do investimento: </strong> <%= number_to_currency(fav.idea.initial_investment_value) %></li>
+            <li class="list-group-item"><strong>Tempo estimado do projeto: </strong><%= t('months', count: fav.idea.estimated_project_time) %></li>
+            <li class="list-group-item"><strong>Tempo estimado para retorno: </strong><%= t('months', count: fav.idea.estimated_time_to_profit) %></li>
+          </ul>
+        </div>
+      </div>
     </div>
- <%end%>
+  <% end %>
+  </div>
+  <%if @fav_ideas.empty?%>
+    <div class="alert alert-warning" role="alert">
+      Você ainda não possui nenhuma ideia favorita
+    </div>
+  <%end%>
+</div>

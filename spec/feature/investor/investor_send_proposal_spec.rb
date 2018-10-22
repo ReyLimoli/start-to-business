@@ -86,27 +86,23 @@ Proposta TOP")
   end
 
   scenario 'and link do not show to idealizer' do
-    User.create!(name: 'Aparecida', email: 'user1234@user.com',
-                 password: '123456', document: 123_456,
-                 linkedin: 'linkedin', birth_day: '2016-05-10',
-                 amount_available_to_invest: '600')
-    user = User.create!(name: 'Aparecida', email: 'user2@user.com',
-                        password: '123456', document: 123_456,
-                        linkedin: 'linkedin', birth_day: '2016-05-10')
+    idealizer = User.create!(name: 'Aparecida', email: 'user2@user.com',
+                             password: '123456', document: 123_456,
+                             linkedin: 'linkedin', birth_day: '2016-05-10')
     category_technology = Category.create(name: 'Tecnologia')
     idea = create(:idea, title: 'Invenção da roda',
                          description: 'Nova forma de utilizar a roda',
                          estimated_project_time: 3,
                          initial_investment_value: 10_000.00,
-                         estimated_time_to_profit: 24, user: user,
+                         estimated_time_to_profit: 24, user: idealizer,
                          category: category_technology)
     InvestmentType.create!(name: 'Comprar ideia')
 
     visit root_path
 
     click_on 'Logar'
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password
+    fill_in 'Email', with: idealizer.email
+    fill_in 'Senha', with: idealizer.password
     click_on 'Entrar'
 
     within "#idea-#{idea.id}" do
