@@ -6,7 +6,6 @@ require 'simplecov'
 SimpleCov.start 'rails' do
   add_filter 'app/channels/'
   add_filter 'app/jobs/'
-  add_filter 'app/mailers/'
 end
 
 require File.expand_path('../../config/environment', __FILE__)
@@ -40,6 +39,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  config.include Warden::Test::Helpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

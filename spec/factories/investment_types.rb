@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :investment_type do
-    name { 'MyString' }
+    name { 'Comprar ideia' }
   end
 end
